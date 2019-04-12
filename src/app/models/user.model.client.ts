@@ -15,8 +15,9 @@ export class User {
 
 
 
-    constructor( _id, username, password, firstName = 'alice' , lastName = 'chase', email = 'alice@gmail') {
+    constructor( _id, userType, username, password, firstName = 'alice' , lastName = 'chase', email = 'alice@gmail') {
         this._id = _id;
+        this.userType = userType;
         this.username = username;
         this.password = password;
         this.firstName = firstName;

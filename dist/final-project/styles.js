@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nanliu/files/NEU/CS5610/final-project/final-project/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/nanliu/files/NEU/CS5610/CS5610-final-project/src/styles.css */"./src/styles.css");
 
 
 /***/ })

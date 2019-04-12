@@ -11,8 +11,7 @@
            name="username"
            class="form-control"
            placeholder="username"
-           ngModel
-           required
+           ngModel required
            #username="ngModel"/>
     <span class="help-block" *ngIf="!username.valid && username.touched">
         Please enter username!
@@ -30,6 +29,17 @@
     <button class="btn btn-primary btn-block"
             type="submit"
             [disabled]="!f.valid">Login</button>
+
+    <label>
+      <select type="userType"
+              name="userType"
+              class="form-control"
+              ngModel required #userType="ngModel" >
+        <option value="administrator">administrator</option>
+        <option value="restaurantOwner">restaurantOwner</option>
+        <option value="customer">customer</option>
+      </select>
+    </label>
 
     <a href="/facebook/login" class="btn btn-primary btn-block">
       <span class="fa fa-facebook"></span>

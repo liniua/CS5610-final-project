@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   user: User;
   username: string;
   password: string;
+  userType: string;
   errorFlag: boolean;
   errorMsg = 'Invalid username or password !';
 
@@ -24,44 +25,40 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  login() {
+
+      // fetching data from loginForm
+      this.username = this.loginForm.value.username;
+      this.password = this.loginForm.value.password;
+      this.userType = this.loginForm.value.userType;
+      console.log('username is : ' + this.username);
+      console.log('password is : ' + this.password);
+      console.log('userType is : ' + this.userType);
+
+      const user = this.userService.findUserByCredentials(this.username, this.password);
+      if (user) {
+          this.router.navigate(['/user', user._id]);
+      }
+  }
+
   // login() {
   //
   //   // fetching data from loginForm
   //   this.username = this.loginForm.value.username;
   //   this.password = this.loginForm.value.password;
-  //   console.log('username is : ' + this.username);
-  //   //
-  //   // const user = this.userService.findUserByCredentials(this.username, this.password);
-  //   // if (user) {
-  //   //   this.router.navigate(['/user', user._id]);
-  //   // }
-  //   this.userService.findUserByCredentials(this.username, this.password)
-  //     .subscribe((user: User) => {
-  //       if (user) {
-  //         console.log(user);
-  //         this.router.navigate(['/user', user._id ]);
-  //       }
-  //     });
+  //
+  //   // calling client side userservice to send login information
+  //   console.log('data', this.username);
+  //   this.userService.login(this.username, this.password)
+  //       .subscribe(
+  //           (data: any) => {
+  //             this.sharedService.user = data;
+  //             console.log('Current user : ' + this.sharedService.user);
+  //             this.router.navigate(['/profile']); },
+  //           (error: any) => {
+  //             console.log(error);
+  //           }
+  //       );
   // }
-
-  login() {
-
-    // fetching data from loginForm
-    this.username = this.loginForm.value.username;
-    this.password = this.loginForm.value.password;
-
-    // calling client side userservice to send login information
-    console.log('data', this.username);
-    this.userService.login(this.username, this.password)
-        .subscribe(
-            (data: any) => {
-              this.sharedService.user = data;
-              console.log('Current user : ' + this.sharedService.user);
-              this.router.navigate(['/profile']); },
-            (error: any) => {
-              console.log(error);
-            }
-        );
-  }
 
 }
