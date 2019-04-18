@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
-    <list default="true" id="ac056c67-278b-4386-9ef6-82170a65a506" name="Default Changelist" comment="">
+    <list de fault="true" id="ac056c67-278b-4386-9ef6-82170a65a506" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/app/models/page.model.client.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/models/user.model.client.ts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/app/models/widget.model.client.ts" afterDir="false" />

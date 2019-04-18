@@ -4,7 +4,7 @@ var pageSchema = require('../page/page.schema.server');
 
 var restaurantSchema = mongoose.Schema({
         name: String,
-        userId: {type: mongoose.Schema.ObjectId, ref: "User"},
+        ownerId: {type: mongoose.Schema.ObjectId, ref: "User"},
         type: String,
         description: String,
         restaurantUrl: String,
@@ -12,7 +12,7 @@ var restaurantSchema = mongoose.Schema({
         city: String,
         zip:  String,
         adsFee: Number,
-        page: [pageSchema],
+        pages: [pageSchema],
         dateCreate:{type: Date, default: Date.now()}
     },{collection: "Restaurants"}
 );

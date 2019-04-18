@@ -1,7 +1,7 @@
 export class Restaurant {
     _id: string;
     name: string;
-    userId: string;
+    ownerId: string;
     type: string;
     description: string;
     restaurantUrl: string;
@@ -11,12 +11,12 @@ export class Restaurant {
     adsFee: number;
 
 
-    constructor(_id, userId , adsFee = 0, type = '', name= '', description = '',
+    constructor(_id, ownerId , adsFee = 0, type = '', name= '', description = '',
                 restaurantUrl = '', address = '', city = '', zip = '' ) {
         this._id = _id;
         this.name = name;
         this.description = description;
-        this.userId = userId;
+        this.ownerId = ownerId;
         this.type = type;
         this.restaurantUrl = restaurantUrl;
         this.address = address;

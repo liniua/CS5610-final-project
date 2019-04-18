@@ -37,7 +37,7 @@ function findByCredential(username,password){
     console.log("I am here");
     return userModel.findOne({username:username,password:password});
 }
-function findBy
+
 
 function updateUser(userId,user) {
     return userModel.findByIdAndUpdate(userId,user);
