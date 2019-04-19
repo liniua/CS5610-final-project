@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['../']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Edit Page
+      </a>
+    </div>
+
+    <div class="navbar-text float-right">
+      <a [routerLink]="['../']" class="cl-icon-padding cl-text-black" (click) = "updatePage()">
+        <i class="fas fa-check fontawsome_icon"></i>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container cl-container-padding">
+  <form (ngSubmit) = "updatePage()" #f="ngForm">
+    <div class="form-group">
+      <label for="page-name">Name</label>
+      <input [(ngModel)]="page.name" required
+             name="pageName"
+             type="text"
+             class="form-control"
+             id="page-name"
+             placeholder="Page Name">
+      <div [hidden]="['page.name'].valid || ['page.name'].untouched"
+           class="alert alert-danger">
+        Page Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="page-title">Title</label>
+      <input [(ngModel)]="page.title"
+             name="title"
+             type="text"
+             class="form-control"
+             id="page-title"
+             placeholder="Page Title">
+    </div>
+    <a class="btn btn-danger btn-block" [routerLink]="['../']" (click) = "deletePage()">Delete</a>
+  </form>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

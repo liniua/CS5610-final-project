@@ -1,3 +1,43 @@
-<p>
-  register works!
-</p>
+<div class="container cl-container-padding">
+
+  <div *ngIf="error"
+       class="alert alert-danger">
+    {{error}}
+  </div>
+
+  <h1>Register</h1>
+  <form (ngSubmit)="register()" #f="ngForm">
+  <input name="username"
+         type="text"
+         class="form-control"
+         placeholder="username"
+         ngModel
+         required
+         #name="ngModel"/>
+    <span class="help-block" *ngIf="!name.valid && name.touched">*Please enter username!</span>
+
+  <input name="password"
+         type="password"
+         class="form-control"
+         placeholder="password"
+         ngModel
+         required
+         #pass="ngModel"/>
+    <span class="help-block" *ngIf="!pass.valid && pass.touched">*Please enter password!</span>
+
+  <input name="vpassword"
+         type="password"
+         class="form-control"
+         placeholder="verify password"
+         ngModel
+         required
+         #vpass="ngModel"/>
+    <span class="help-block" *ngIf="!vpass.valid && vpass.touched">*Please enter password again!</span>
+    <button class="btn btn-primary btn-block"
+            type="submit"
+            [disabled]="!f.valid">Register</button>
+
+  <a class="btn btn-danger  btn-block"
+     [routerLink]="['/login']">Cancel</a>
+  </form>
+</div>

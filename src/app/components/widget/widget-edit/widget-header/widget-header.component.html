@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['../']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Widgets Edit
+      </a>
+    </div>
+
+    <div class="navbar-text float-right">
+      <a class="cl-icon-padding cl-text-black">
+        <!--<i class="fas fa-check fontawsome_icon"></i>-->
+        <button class="fas fa-check fontawsome_icon" (click)="f.ngSubmit.emit()" [disabled]="!f.valid">
+        </button>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container cl-container-padding">
+  <form (ngSubmit) = "update()" #f="ngForm">
+    <div class="form-group">
+      <label for="heading-text">Text</label>
+      <input type="text" class="form-control" id="heading-text" placeholder={{widget.text}}
+             ngModel required
+             name="text" [(ngModel)]="widget.text"/>
+      <div [hidden]="['widget.text'].valid || ['widget.text'].untouched"
+           class="alert alert-danger">
+        Text is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="heading-size">Size</label>
+      <input type="text" class="form-control" id="heading-size" placeholder={{widget.size}}
+             ngModel required
+             name="size" [(ngModel)]="widget.size"/>
+      <div [hidden]="['widget.size'].valid || ['widget.size'].untouched"
+           class="alert alert-danger">
+        Size is required
+      </div>
+    </div>
+    <button class="btn btn-danger btn-block" type="button" (click)="delete()" [routerLink]="['../']">Delete</button>
+  </form>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

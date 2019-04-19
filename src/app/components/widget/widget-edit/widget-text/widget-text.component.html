@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['../']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Text Edit
+      </a>
+    </div>
+
+    <div class="navbar-text float-right">
+      <a class="cl-icon-padding cl-text-black">
+        <button class="fas fa-check fontawsome_icon" (click)="f.ngSubmit.emit()" [disabled]="!f.valid">
+        </button>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container cl-container-padding">
+  <form (ngSubmit)="update()" #f="ngForm">
+
+    <div class="form-group">
+      <label for="heading-text">Text</label>
+      <input [(ngModel)]="widget.text" name="text" class="form-control" id="heading-text"/>
+      <div [hidden]="['widget.text'].valid || ['widget.text'].untouched"
+           class="alert alert-danger">
+        Text is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="heading-rows">Rows</label>
+      <input [(ngModel)]="widget.rows" name="rows" class="form-control" type="number" id="heading-rows"/>
+      <label for="Name">Name</label>
+      <div>
+        <input [(ngModel)]="widget.name"
+               type="text"
+               class="form-control"
+               id="Name"
+               name="name"
+               placeholder="Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="heading-placeholder">Placeholder</label>
+      <input [(ngModel)]="widget.placeholder" name="placeholder" class="form-control" required id="heading-placeholder"/>
+      <div class="input-group">
+        <input type="text"
+               readonly
+               value="Formatted"
+               class="form-control"/>
+        <span class="input-group-addon">
+        <input [(ngModel)]="widget.formatted" name="checkbox"
+               type="checkbox"/></span>
+      </div>
+    </div>
+    <button class="btn btn-danger btn-block" type="button" (click)="delete()" [routerLink]="['../']">Delete</button>
+  </form>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>
