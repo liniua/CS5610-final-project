@@ -1,0 +1,51 @@
+var mongoose = require("mongoose");
+var WebsiteSchema = require("./website.schema.server");
+var WebsiteModel = mongoose.model('WebsiteModel', WebsiteSchema);
+
+var UserModel = require("../user/user.model.server");
+
+WebsiteModel.findWebsitesForUser = findWebSitesForUser;
+WebsiteModel.createWebsiteForUser = createWebsiteForUser;
+WebsiteModel.findWebisteById = findWebsiteById;
+WebsiteModel.updateWebsite = updateWebsite;
+WebsiteModel.deleteWebsite = deleteWebsite;
+
+module.exports = WebsiteModel;
+
+function findWebSitesForUser(userId){
+  return WebsiteModel.find({"developId": userId})
+  //.populate('developerId')
+    .populate('developId', 'username')
+    .exec();
+}
+
+function createWebsiteForUser(userId, website){
+  console.log("this is from userId " + userId);
+  return WebsiteModel.create(website)
+    .then(function(responseWebsite){
+      UserModel.findUserById(website.developId)
+        .then(function(user){
+          user.websites.push(responseWebsite);
+          return user.save();
+        });
+      return responseWebsite;
+    });
+}
+
+function findWebsiteById(websiteId) {
+  return WebsiteModel.findOne({_id: websiteId});
+}
+
+function updateWebsite(websiteId, website) {
+  return WebsiteModel.updateOne({_id: websiteId},website );
+}
+
+function deleteWebsite(websiteId) {
+  WebsiteModel.findWebisteById(websiteId).then(function(website) {
+    UserModel.findUserById(website.developId).then(function(user){
+      user.websites.pull({_id: websiteId});
+      user.save();
+    })
+  });
+  return WebsiteModel.deleteOne({_id: websiteId});
+}

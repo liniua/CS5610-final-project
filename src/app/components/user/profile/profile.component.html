@@ -1,0 +1,86 @@
+<div *ngIf="errorFlag"
+     class="alert alert-danger">
+  {{errorMsg}}
+</div>
+
+<nav class="navbar navbar-expand-sm cl-blue-navbar navbar-dark fixed-top">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="./">Profile</a>
+  </div>
+
+  <div class="container-fluid w-100 justify-content-end" >
+    <a class="navbar-link navbar-text cl-text-white cl-icon-padding">
+      <i class="fas fa-check fontawsome_icon" (click)="f.ngSubmit.emit()"></i>
+      <!--<button class="glyphicon glyphicon-ok"  [hidden]="!f.valid" [disabled]="!f.valid"></button>-->
+    </a>
+  </div>
+
+</nav>
+
+<div class="container cl-container-padding">
+  <h1></h1>
+  <ng-form (ngSubmit) = "updateUser()" #f="ngForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input [(ngModel)]="user.username"
+             name="username"
+             type="text"
+             class="form-control"
+             id="username"
+             placeholder={{user.username}}>
+      <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
+        <!--Please enter username!-->
+      <!--</span>-->
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input [(ngModel)]="user.email"
+             name="email"
+             type="email"
+             class="form-control"
+             id="email"
+             placeholder={{user.email}}>
+      <!--<span class="help-block" *ngIf="!email.valid && email.touched">-->
+        <!--Please enter email!-->
+      <!--</span>-->
+    </div>
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input [(ngModel)]="user.firstName"
+             name="firstName"
+             type="text"
+             class="form-control"
+             id="first-name"
+             placeholder={{user.firstName}}>
+      <!--<span class="help-block" *ngIf="!firstName.valid && firstName.touched">-->
+        <!--Please enter first name!-->
+      <!--</span>-->
+    </div>
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input [(ngModel)]="user.lastName"
+             name="lastName"
+             type="text"
+             class="form-control"
+             id="last-name"
+             placeholder={{user.lastName}}>
+      <!--<span class="help-block" *ngIf="!lastName.valid && lastName.touched">-->
+        <!--Please enter last name!-->
+      <!--</span>-->
+    </div>
+    <a class="btn btn-primary btn-block" [routerLink]="['../user/website']">Websites</a>
+    <a class="btn btn-danger btn-block" (click)="logout()" [routerLink]="['/login']">Logout</a>
+    <a class="btn btn-danger btn-block" (click)="deleteUser(user)" [routerLink]="['/login']">Delete</a>
+  </ng-form>
+</div>
+
+<nav class="navbar navbar-expand-sm cl-blue-navbar navbar-dark fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-white cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>
+
