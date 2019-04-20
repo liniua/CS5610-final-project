@@ -49,6 +49,8 @@ export class RestaurantEditComponent implements OnInit {
     }
     this.restaurant.name = this.restForm.value.name;
     this.restaurant.description = this.restForm.value.description;
+    this.restaurant.address = this.restForm.value.address;
+    this.restaurant.zipcode = this.restForm.value.zipcode;
     this.restaurantService.updateRestaurant(this.userId, this.rid, this.restaurant).subscribe(
       (restaurant: Restaurant) => {
         this.restaurant = restaurant;

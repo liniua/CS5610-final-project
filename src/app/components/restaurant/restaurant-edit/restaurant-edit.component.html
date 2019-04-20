@@ -41,6 +41,33 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="restaurant-address">Address</label>
+          <input [(ngModel)]="restaurant.address" required
+                 name="address"
+                 type="text"
+                 class="form-control"
+                 id="restaurant-address"
+                 placeholder={{restaurant.address}}>
+        </div>
+        <div [hidden]="['address'].valid || ['address'].untouched"
+             class="alert alert-danger">
+          Address is required
+        </div>
+
+        <div class="form-group">
+          <label for="zipcode">Zipcode</label>
+          <input [(ngModel)]="restaurant.zipcode" required
+                 name="zipcode"
+                 type="text"
+                 class="form-control"
+                 id="zipcode"
+                 placeholder={{restaurant.zipcode}}>
+        </div>
+        <div [hidden]="['zipcode'].valid || ['zipcode'].untouched"
+             class="alert alert-danger">
+          Zipcode is required
+        </div>
+        <div class="form-group">
           <label for="restaurant-description">Restaurant Description</label>
           <textarea [(ngModel)]="restaurant.description"
                     name="description"

@@ -5,6 +5,8 @@ var RestaurantSchema = mongoose.Schema({
   name: String,
   ownerId: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
   description: String,
+  address: String,
+  zipcode: String,
   widgets: [
     {type: mongoose.Schema.Types.ObjectId, ref: 'WidgetModel'}
   ],

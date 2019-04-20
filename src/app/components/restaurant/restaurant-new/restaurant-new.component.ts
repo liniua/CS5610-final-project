@@ -16,6 +16,8 @@ export class RestaurantNewComponent implements OnInit {
   userId: String;
   restaurants: Restaurant[];
   restname: String;
+  address: String;
+  zipcode: String;
   description: String;
 
   constructor(private restaurantService: RestaurantService, private activatedRoute: ActivatedRoute, private router: Router,
@@ -31,8 +33,10 @@ export class RestaurantNewComponent implements OnInit {
 
   createRestaurant() {
     this.restname = this.restForm.value.restname;
+    this.address = this.restForm.value.address;
+    this.zipcode = this.restForm.value.zipcode;
     this.description = this.restForm.value.description;
-    const new_restaurant = new Restaurant(undefined, this.restname, this.userId, this.description);
+    const new_restaurant = new Restaurant(undefined, this.restname, this.userId, this.description, this.address, this.zipcode);
 
     console.log('new restaurant: ');
     console.log(new_restaurant.name);
