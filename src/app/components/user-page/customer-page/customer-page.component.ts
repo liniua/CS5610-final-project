@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-customer-page',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerPageComponent implements OnInit {
 
+  @ViewChild('f') searchForm: NgForm;
+  zipcode: String;
+  restaurantName: String;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+
+  searchByZipcode() {
+    this.zipcode = this.searchForm.value.zipcode;
   }
 
+
+  searchByRestaurantName() {
+    this.restaurantName = this.searchForm.value.restaurantName;
+  }
 }

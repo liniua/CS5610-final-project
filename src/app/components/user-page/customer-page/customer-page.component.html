@@ -1,3 +1,76 @@
-<p>
-  customer-page works!
-</p>
+
+<body background="http://www.realdetroitweekly.com/wp-content/uploads/2017/06/Restaurants.jpg"
+      style='height: 100%; width: 100%; object-fit: contain'>
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['/profile']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+    </div>
+    <div>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Customer's Page
+      </a>
+    </div>
+    <div class="navbar-text float-right" [routerLink]="['./']">
+      <a>
+        Write a review
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container cl-container-padding">
+
+  <div *ngIf="errorFlag"
+       class="alert alert-danger">
+    {{errorMsg}}
+  </div>
+
+  <h1>Where to eat?</h1>
+  <ul>
+    <li>
+      <form (ngSubmit) = "searchByZipcode()" #f="ngForm">
+        <input type="text"
+               name="zipcode"
+               class="form-control"
+               placeholder="zipcode"
+               ngModel
+               required
+               #zipcode="ngModel"/>
+        <span class="help-block" *ngIf="!zipcode.valid && zipcode.touched">
+        Please enter zipcode!
+    </span>
+
+        <button class="btn btn-success btn-block"
+                [routerLink]="['/register']">Search by zipCode</button>
+      </form>
+    </li>
+    <li>
+      <a>
+
+      </a>
+    </li>
+    <li>
+      <form (ngSubmit) = "searchByRestaurantName()" #f="ngForm">
+        <input type="text"
+               name="restaurantName"
+               class="form-control"
+               placeholder="restaurant name"
+               ngModel required #restaurantName="ngModel"/>
+        <span class="help-block" *ngIf="!restaurantName.valid && restaurantName.touched">
+        Please enter restaurant name!
+    </span>
+
+        <button class="btn btn-primary btn-block"
+                type="submit"
+                [disabled]="!f.valid">Search by restaurant name</button>
+      </form>
+    </li>
+  </ul>
+</div>
+</body>
