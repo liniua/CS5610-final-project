@@ -18,8 +18,8 @@ export class PageListComponent implements OnInit {
   ngOnInit() {
     this.activeRoute.params.subscribe(
       (params: any) => {
-        console.log(params['wid']);
-        this.websiteID = params['wid'];
+        console.log(params['rid']);
+        this.websiteID = params['rid'];
         this.pageService.findPageByWebsiteId(this.websiteID).subscribe(
           (pages: Page[]) => {
             this.pages = pages;

@@ -23,7 +23,9 @@ module.exports=function(app) {
   app.post('/api/register', register);
   app.post ('/api/loggedIn', loggedIn);
 
+
   //GET calls
+  app.get("/api/users", findAllUsers);
   app.get("/api/user", findUserByCredentials);
   app.get("/api/user/:userId", findUserById);
   app.get('/facebook/login', passport.authenticate('facebook', { scope : 'email' }));
@@ -89,6 +91,7 @@ module.exports=function(app) {
           var newFacebookUser = {
             username: '123',
             password: '123',
+            userType: 'customer',
             lastName: names[1],
             firstName: names[0],
             email: profile.emails ? profile.emails[0].value : "",
@@ -181,6 +184,11 @@ module.exports=function(app) {
         res.sendStatus(400).send(err);
       }
     );
+  }
+
+  function findAllUsers(req, res) {
+
+    UserModel.findAllUsers().then( (users) => res.json(users));
   }
 
   function findUserByCredentials(req, res){

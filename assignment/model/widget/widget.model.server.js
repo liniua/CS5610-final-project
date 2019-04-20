@@ -3,11 +3,11 @@
 var mongoose = require("mongoose");
 
 var WidgetSchema = require("./widget.schema.server");
-var PageModel = require("../page/page.model.server");
+var RestaurantModel = require("../restaurant/restaurant.model.server");
 var WidgetModel = mongoose.model('WidgetModel', WidgetSchema);
 
 WidgetModel.createWidget = createWidget;
-WidgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
+WidgetModel.findAllWidgetsForRest = findAllWidgetsForRest;
 WidgetModel.findWidgetById = findWidgetById;
 WidgetModel.updateWidget = updateWidget;
 WidgetModel.deleteWidget = deleteWidget;
@@ -15,29 +15,26 @@ WidgetModel.reorderWidget = reorderWidget;
 
 module.exports = WidgetModel;
 
-function createWidget(pageId, Widget) {
+function createWidget(rid, Widget) {
 
   return WidgetModel.create(Widget)
     .then(function(responseWidget){
-      PageModel.findPageById(responseWidget.pageId)
-        .then(function(page){
-          page.widgets.push(responseWidget);
-          return page.save();
+        RestaurantModel.findRestaurantById(responseWidget.rid)
+        .then(function(rest){
+            rest.widgets.push(responseWidget);
+          return rest.save();
         });
       return responseWidget;
     });
 }
 
-function findAllWidgetsForPage(pageId) {
-  // return WidgetModel.find({'pageId' : pageId})
-  //   .populate('pageId').exec();
-  return PageModel
-    .findPageById(pageId)
+function findAllWidgetsForRest(rid) {
+  return RestaurantModel.findRestaurantById(rid)
     .populate('widgets')
     .then(
-      function (page) {
-        // console.log(page.widgets);
-        return page.widgets;
+      function (rest) {
+        // console.log(restaurant-page.widgets);
+        return rest.widgets;
       }
     )
 }
@@ -52,27 +49,19 @@ function updateWidget(widgetId, widget){
 
 function deleteWidget(widgetId) {
   WidgetModel.findWidgetById(widgetId).then(function(widget) {
-    PageModel.findPageById(widget.pageId).then(function(page){
-      page.widgets.pull({_id: widgetId});
-      page.save();
+      RestaurantModel.findRestaurantById(widget.rid).then(function(rest){
+      rest.widgets.pull({_id: widgetId});
+      rest.save();
     })
   });
   return WidgetModel.deleteOne({_id: widgetId});
 }
 
-function reorderWidget(pageId, start, end) {
-  return PageModel.findPageById(pageId).then(
-    function(page) {
-      console.log("wigs: ");
-      for (let w of page.widgets) {
-        console.log(w);
-      }
-      page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
-      console.log("after wigs: ");
-      for (let w of page.widgets) {
-        console.log(w);
-      }
-      return page.save();
+function reorderWidget(rid, start, end) {
+  return RestaurantModel.findRestaurantById(rid).then(
+    function(rest) {
+      rest.widgets.splice(end, 0, rest.widgets.splice(start, 1)[0]);
+      return rest.save();
     }
   )
 }

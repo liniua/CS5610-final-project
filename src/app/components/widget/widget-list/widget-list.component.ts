@@ -11,19 +11,16 @@ import {Widget} from '../../../models/widget.model.client';
 export class WidgetListComponent implements OnInit {
 
   widgets: Widget[] = [];
-  websiteId: String;
-  pageID: String;
+  rid: String;
 
   constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        console.log(params['pid']);
-        console.log(params['wid']);
-        this.pageID = params['pid'];
-        this.websiteId = params['wid'];
-        this.widgetService.findWidgetsByPageId(this.pageID)
+        console.log(params['rid']);
+        this.rid = params['rid'];
+        this.widgetService.findWidgetsByRId(this.rid)
           .subscribe(
             (widgets: Widget[]) => {
               this.widgets = widgets;
@@ -35,7 +32,7 @@ export class WidgetListComponent implements OnInit {
   // receiving the emitted event
   reorderWidgets(indexes) {
     // call widget service function to update widget as per index
-    this.widgetService.reorderWidgets(indexes.startIndex, indexes.endIndex, this.pageID)
+    this.widgetService.reorderWidgets(indexes.startIndex, indexes.endIndex, this.rid)
       .subscribe(
         (data) => console.log(data)
       );

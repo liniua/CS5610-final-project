@@ -11,13 +11,13 @@ export  class WidgetService {
 
   constructor(private _http: HttpClient) {}
 
-  createWidget(pageId, widget) {
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget';
+  createWidget(rid, widget) {
+    const url = this.baseUrl + '/api/restaurant/' + rid + '/widget';
     return this._http.post(url, widget);
   }
 
-  findWidgetsByPageId(pageId) {
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget';
+  findWidgetsByRId(rid) {
+    const url = this.baseUrl + '/api/restaurant/' + rid + '/widget';
     return this._http.get(url);
   }
 
@@ -36,72 +36,9 @@ export  class WidgetService {
     return this._http.delete(url);
   }
 
-  reorderWidgets(startIndex, endIndex, pageId) {
+  reorderWidgets(startIndex, endIndex, rid) {
 
-    const url = this.baseUrl + '/api/page/' + pageId + '/widget?start=' + startIndex + '&end=' + endIndex;
+    const url = this.baseUrl + '/api/restaurant/' + rid + '/widget?start=' + startIndex + '&end=' + endIndex;
     return this._http.put(url, '');
   }
-
-  // createWidget(pageId: String, widget: Widget) {
-  //   widget._id = Math.floor(Math.random() * 10000).toString();
-  //   widget.pageId = pageId;
-  //   this.widgets.push(widget);
-  // }
-  //
-  // findWidgetsByPageId(pageId: String) {
-  //   const resultSet = [];
-  //   for ( const i in this.widgets) {
-  //     if (this.widgets[i].pageId === pageId) {
-  //       resultSet.push(this.widgets[i]);
-  //     }
-  //   }
-  //   return resultSet;
-  // }
-  //
-  // findWidgetById(widgetId: String) {
-  //   return this.widgets.find(function (widget) {
-  //     return widget._id === widgetId;
-  //   });
-  // }
-  //
-  // updateWidget(widgetId: String, widget: Widget) {
-  //   for ( const i in this.widgets ) {
-  //     if ( this.widgets[i]._id === widgetId ) {
-  //       switch (widget.widgetType) {
-  //         case 'HEADING':
-  //           this.widgets[i].text = widget.text;
-  //           this.widgets[i].size = widget.size;
-  //           return true;
-  //
-  //         case 'IMAGE':
-  //           this.widgets[i].text = widget.text;
-  //           this.widgets[i].url = widget.url;
-  //           this.widgets[i].width = widget.width;
-  //           return true;
-  //
-  //         case 'YOUTUBE':
-  //           this.widgets[i].text = widget.text;
-  //           this.widgets[i].size = widget.size;
-  //           this.widgets[i].url = widget.url;
-  //           this.widgets[i].width = widget.width;
-  //           return true;
-  //
-  //         case 'HTML':
-  //           this.widgets[i].text = widget.text;
-  //           return true;
-  //       }
-  //
-  //     }
-  //   }
-  //   return false;
-  // }
-  //
-  // deleteWidget(widgetId: String) {
-  //   for (const i in this.widgets) {
-  //     if (this.widgets[i]._id === widgetId) {
-  //       const j = +i;
-  //       this.widgets.splice(j, 1);
-  //     }
-  //   }
-  // }
 }

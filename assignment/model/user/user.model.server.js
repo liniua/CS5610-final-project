@@ -34,8 +34,8 @@ function createUser(user){
 }
 
 function findAllUsers(){
-  UserModel.find(function (err, doc) {
-    console.log(docs);
+  return UserModel.find(function (err, doc) {
+    console.log(doc);
   })
 }
 

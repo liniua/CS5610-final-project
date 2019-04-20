@@ -63,6 +63,11 @@ export class UserService {
     return this.http.post(this.baseUrl + '/api/user/', body);
   }
 
+  findAllUsers() {
+    return this.http.get(this.baseUrl + '/api/users/');
+  }
+
+
   findUserById(userId: String) {
     return this.http.get(this.baseUrl + '/api/user/' + userId);
       // .pipe(map((response: Response) => {

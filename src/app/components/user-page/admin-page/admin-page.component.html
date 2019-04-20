@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['/profile']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon">Profile</i>
+      </a>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Admin's Page
+      </a>
+    </div>
+
+    <!--<div class="navbar-text float-right">-->
+      <!--<a [routerLink]="['./new']" class="cl-icon-padding cl-text-black">-->
+        <!--<i class="fas fa-plus fontawsome_icon"></i>-->
+      <!--</a>-->
+    <!--</div>-->
+
+  </div>
+</nav>
+
+
+<div class="container-fluid cl-container-padding">
+  <ul class="list-group cl-list-group-borderless">
+    <a>User List: </a>
+    <li class="list-group-item cl-list-item-borderless">
+      <div class="row">
+        <div class="column">User name</div>
+        <div class="column">User Type</div>
+        <div class="column">Option</div>
+      </div>
+    </li>
+    <li *ngFor="let user of users" class="list-group-item cl-list-item-borderless">
+      <div class="row">
+        <div class="column">{{user.username}}</div>
+        <div class="column">{{user.userType}}</div>
+        <div class="column">
+          <a class="btn btn-danger" (click)="deleteUser(user)" [routerLink]="['/userpage']">Delete</a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

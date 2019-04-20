@@ -11,7 +11,7 @@ import {WidgetService} from '../../../../services/widget.service.client';
 export class WidgetHtmlComponent implements OnInit {
 
   wgid: String;
-  pageID: String;
+  rid: String;
   widget: Widget;
 
   editorContent: String;
@@ -37,7 +37,7 @@ export class WidgetHtmlComponent implements OnInit {
 
   update() {
     if (this.wgid === undefined) {
-      this.widgetService.createWidget(this.pageID, this.widget).subscribe(
+      this.widgetService.createWidget(this.rid, this.widget).subscribe(
         (widget: Widget) => {
           this.widget = widget;
           this.route.navigate(['../'], {relativeTo: this.activatedRoute});
@@ -56,10 +56,10 @@ export class WidgetHtmlComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.pageID = params['pid'];
+        this.rid = params['rid'];
         this.wgid = params['wgid'];
         if (this.wgid === undefined) {
-          this.widget = new Widget(undefined, 'HTML', this.pageID, '', '', '', '', undefined);
+          this.widget = new Widget(undefined, 'HTML', this.rid, '', '', '', '', undefined);
         } else {
           this.widgetService.findWidgetById(this.wgid).subscribe(
             (widget: Widget) => {

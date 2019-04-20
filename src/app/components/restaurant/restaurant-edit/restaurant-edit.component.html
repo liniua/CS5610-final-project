@@ -4,13 +4,13 @@
   </div>
 
   <div class="col-3 d-none d-sm-block">
-    <a class="navbar-brand cl-icon-padding" [routerLink]="['..']">Websites</a >
+    <a class="navbar-brand cl-icon-padding" [routerLink]="['..']">Restaurant Owner's Page</a >
     <a class="navbar-text float-right" [routerLink]="['../new']"><i class="fa fa-plus"></i></a >
   </div>
 
   <div class="col-8">
-    <a class="navbar-brand cl-icon-padding" [routerLink]="['.']">Edit Websites</a >
-    <a class="navbar-text float-right" [routerLink]="['..']" (click) = "updateWebsite()"><i class="fa fa-check"></i></a >
+    <a class="navbar-brand cl-icon-padding" [routerLink]="['.']">Edit Restaurant Page</a >
+    <a class="navbar-text float-right" [routerLink]="['..']" (click) = "updateRestaurant()"><i class="fa fa-check"></i></a >
   </div>
 </nav>
 
@@ -18,39 +18,39 @@
   <div class="row">
     <div class="col-4 d-none d-sm-block">
       <ul class="list-group cl-list-group-borderless">
-        <li *ngFor="let website of websites" class="list-group-item cl-list-item-borderless">
-          <a [routerLink]="['../', website._id]">
+        <li *ngFor="let restaurant of restaurants" class="list-group-item cl-list-item-borderless">
+          <a [routerLink]="['../', restaurant._id]">
             <i class="fas fa-cog fontawsome_icon float-right" ></i></a>
-          <a [routerLink]="['../', website._id, 'page']">{{website.name}}</a>
+          <a [routerLink]="['../', restaurant._id, 'widget']">{{restaurant.name}}</a>
         </li>
       </ul>
     </div>
     <div class="col-8">
-      <form (ngSubmit)="updateWebsite()" #f="ngForm">
+      <form (ngSubmit)="updateRestaurant()" #f="ngForm">
         <div class="form-group">
-          <label for="website-name">Website Name</label>
-          <input [(ngModel)]="website.name" required
-                 name="websiteName"
+          <label for="restaurant-name">Restaurant Name</label>
+          <input [(ngModel)]="restaurant.name" required
+                 name="name"
                  type="text"
                  class="form-control"
-                 id="website-name"
-                 placeholder={{website.name}}>
-          <div [hidden]= "['website.name'].valid || ['website.name'].untouched"
+                 id="restaurant-name"
+                 placeholder={{restaurant.name}}>
+          <div [hidden]= "['restaurant.name'].valid || ['restaurant.name'].untouched"
                class="alert alert-danger">
             Name is required
           </div>
         </div>
         <div class="form-group">
-          <label for="website-description">Website Description</label>
-          <textarea [(ngModel)]="website.description"
+          <label for="restaurant-description">Restaurant Description</label>
+          <textarea [(ngModel)]="restaurant.description"
                     name="description"
-                    id="website-description"
+                    id="restaurant-description"
                     class="form-control"
                     rows="5"
-                    placeholder={{website.description}}
+                    placeholder={{restaurant.description}}
           ></textarea>
         </div>
-        <a class="btn btn-danger btn-block" [routerLink]="['../']" (click) = "deleteWeb()">Delete</a>
+        <a class="btn btn-danger btn-block" [routerLink]="['../']" (click) = "deleteRestaurant()">Delete</a>
       </form>
     </div>
   </div>

@@ -11,7 +11,7 @@ import {WidgetService} from '../../../../services/widget.service.client';
 export class WidgetTextComponent implements OnInit {
 
   wgid: String;
-  pageID: String;
+  rid: String;
   widget: Widget;
   text: any;
   constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService, private route: Router) { }
@@ -24,7 +24,7 @@ export class WidgetTextComponent implements OnInit {
 
   update() {
     if (this.wgid === undefined) {
-      this.widgetService.createWidget(this.pageID, this.widget).subscribe(
+      this.widgetService.createWidget(this.rid, this.widget).subscribe(
         (widget: Widget) => {
           this.widget = widget;
           this.route.navigate(['../'], {relativeTo: this.activatedRoute});
@@ -43,10 +43,10 @@ export class WidgetTextComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.pageID = params['pid'];
+        this.rid = params['rid'];
         this.wgid = params['wgid'];
         if (this.wgid === undefined) {
-          this.widget = new Widget(undefined, 'TEXT', this.pageID, '', '', '', '', undefined);
+          this.widget = new Widget(undefined, 'TEXT', this.rid, '', '', '', '', undefined);
         } else {
           this.widgetService.findWidgetById(this.wgid).subscribe(
             (widget: Widget) => {

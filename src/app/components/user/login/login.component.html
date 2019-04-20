@@ -28,23 +28,6 @@
         Please enter password!
     </span>
 
-    <label>
-      <a>User Type </a>
-      <select type="text"
-              name="userType"
-              class="form-control"
-              ngModel
-              required
-              #userType="ngModel">
-        <option value="admin">admin</option>
-        <option value="restaurantOwner">restaurantOwner</option>
-        <option value="customer">customer</option>
-      </select>
-    </label>
-
-    <span class="help-block" *ngIf="!userType.valid && userType.touched">
-        Please choose user type!
-    </span>
     <button class="btn btn-primary btn-block"
             type="submit"
             [disabled]="!f.valid">Login</button>

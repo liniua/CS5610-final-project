@@ -12,12 +12,9 @@ import {WidgetService} from '../../../../services/widget.service.client';
 export class WidgetYoutubeComponent implements OnInit {
 
   @ViewChild('f') youtubeForm: NgForm;
-  pageID: String;
+  rid: String;
   wgid: String;
-  // width: String;
   name: String;
-  // text: String;
-  // url: String;
   widget: Widget;
   constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService, private route: Router) { }
 
@@ -43,15 +40,15 @@ export class WidgetYoutubeComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        console.log(params['pid']);
-        this.pageID = params['pid'];
+        console.log(params['rid']);
+        this.rid = params['rid'];
         console.log(params['wgid']);
         this.wgid = params['wgid'];
       }
     );
 
     if (this.wgid === undefined) {
-      this.widget = new Widget(undefined, 'YOUTUBE', this.pageID, '', '', '', '', undefined);
+      this.widget = new Widget(undefined, 'YOUTUBE', this.rid, '', '', '', '', undefined);
     } else {
       this.widgetService.findWidgetById(this.wgid).subscribe(
         (widget: Widget) => {

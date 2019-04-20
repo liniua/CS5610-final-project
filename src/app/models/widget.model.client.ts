@@ -11,7 +11,7 @@ export class Widget {
   deletable: Boolean;
   formatted: Boolean;
   widgetType: String;
-  pageId: String;
+  rid: String;
   size: String;
   text: String;
   url: String;
@@ -19,10 +19,10 @@ export class Widget {
 
 
 
-  constructor(_id: String, type: String, pageId: String, size: String, text: String, width: String, url: String, position: Number) {
+  constructor(_id: String, type: String, rid: String, size: String, text: String, width: String, url: String, position: Number) {
     this._id = _id;
     this.widgetType = type;
-    this.pageId = pageId;
+    this.rid = rid;
     this.size = size;
     this.url = url;
     this.text = text;

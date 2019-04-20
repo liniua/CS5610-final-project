@@ -62,6 +62,7 @@ export class ProfileComponent implements OnInit {
 
     const user = {_id: this.userId,
       username: this.username,
+      userType: this.user.userType,
       password: this.password,
       firstName: this.firstName,
       lastName: this.lastName,
@@ -75,7 +76,7 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUser(user).subscribe(
         (new_user: any) => {
           this.user = new_user;
-          this.route.navigate(['/login']);
+          this.route.navigate(['/profile']);
         }
       );
   }

@@ -13,9 +13,8 @@ import {environment} from '../../../../../environments/environment';
 export class WidgetImageComponent implements OnInit {
 
   @ViewChild('f') imageForm: NgForm;
-  pageID: String;
+  rid: String;
   wgid: String;
-  websiteId: String;
   width: String;
   name: String;
   text: String;
@@ -30,14 +29,14 @@ export class WidgetImageComponent implements OnInit {
   update() {
     this.widgetService.updateWidget(this.wgid, this.widget)
       .subscribe(
-        (data: any) => this.route.navigate(['/user/website', this.websiteId, 'page', this.pageID, 'widget']),
+        (data: any) => this.route.navigate(['/userpage/', this.rid, 'widget']),
         (error: any) => console.log(error)
       );
   }
 
   delete() {
     this.widgetService.deleteWidget(this.wgid) .subscribe(
-      (data: any) => this.route.navigate(['/user/website', this.websiteId, 'page', this.pageID, 'widget']),
+      (data: any) => this.route.navigate(['/userpage/', this.rid, 'widget']),
       (error: any) => console.log(error)
     );
   }
@@ -49,8 +48,7 @@ export class WidgetImageComponent implements OnInit {
     this.baseUrl = environment.baseUrl;
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.websiteId = params['wid'];
-        this.pageID = params['pid'];
+        this.rid = params['rid'];
         this.wgid = params['wgid'];
       });
     this.widgetService.findWidgetById(this.wgid)

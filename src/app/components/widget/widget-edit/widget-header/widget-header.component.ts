@@ -12,16 +12,15 @@ import {WidgetService} from '../../../../services/widget.service.client';
 export class WidgetHeaderComponent implements OnInit {
 
   @ViewChild('f') headerForm: NgForm;
-  websiteId: String;
+  rid: String;
   wgid: String;
-  pageID: String;
   widget: Widget;
   constructor(private activatedRoute: ActivatedRoute, private widgetService: WidgetService, private route: Router) { }
 
   delete() {
     this.widgetService.deleteWidget(this.wgid)
       .subscribe(
-        (data: any) => this.route.navigate(['/user/website', this.websiteId, 'page', this.pageID, 'widget']),
+        (data: any) => this.route.navigate(['/userpage/', this.rid, 'widget']),
         (error: any) => console.log(error)
       );
   }
@@ -33,18 +32,16 @@ export class WidgetHeaderComponent implements OnInit {
 
     this.widgetService.updateWidget(this.wgid, this.widget)
       .subscribe(
-        (data: any) => this.route.navigate(['/user/website', this.websiteId, 'page', this.pageID, 'widget']),
+        (data: any) => this.route.navigate(['/userpage/', this.rid, 'widget']),
         (error: any) => console.log(error)
       );
   }
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params: any) => {
-        this.websiteId = params['wid'];
-        this.pageID = params['pid'];
+        this.rid = params['rid'];
         this.wgid = params['wgid'];
-        console.log(this.websiteId);
-        console.log(this.pageID);
+        console.log(this.rid);
         console.log(this.wgid);
       });
     this.widgetService.findWidgetById(this.wgid)

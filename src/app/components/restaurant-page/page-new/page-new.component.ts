@@ -28,8 +28,8 @@ export class PageNewComponent implements OnInit {
   ngOnInit() {
     this.activeRoute.params.subscribe(
       (params: any) => {
-        console.log(params['wid']);
-        this.websiteID = params['wid'];
+        console.log(params['rid']);
+        this.websiteID = params['rid'];
       });
   }
 

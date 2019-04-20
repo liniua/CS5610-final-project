@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var PageSchema = require("./page.schema.server");
-var WebsiteModel = require("../website/website.model.server")
+var WebsiteModel = require("../restaurant/restaurant.model.server")
 
 var PageModel = mongoose.model('PageModel', PageSchema);
 
@@ -15,7 +15,7 @@ module.exports = PageModel;
 function createPage(websiteId, page) {
   return PageModel.create(page)
     .then(function(responsePage){
-      WebsiteModel.findWebisteById(responsePage.websiteId)
+      WebsiteModel.findRestaurantById(responsePage.rid)
         .then(function(website){
           website.pages.push(responsePage);
           return website.save();
@@ -26,7 +26,7 @@ function createPage(websiteId, page) {
 
 function findAllPagesForWebsite(websiteId) {
   return PageModel.find({'websiteId' : websiteId})
-    .populate('websiteId').exec();
+    .populate('rid').exec();
 }
 
 function findPageById(pageId) {
@@ -40,7 +40,7 @@ function updatePage(pageId, page){
 function deletePage(pageId) {
   PageModel.findPageById(pageId)
     .then(function (page) {
-      WebsiteModel.findWebisteById(page.websiteId)
+      WebsiteModel.findRestaurantById(page.rid)
         .then(function (website) {
           website.pages.pull({_id : pageId});
           website.save();
