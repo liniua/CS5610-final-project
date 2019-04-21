@@ -5,6 +5,7 @@ export class Restaurant {
   description: String;
   address: String;
   zipcode: String;
+  //ads: number;
 
   constructor(_id: String, name: String, ownerId: String, description: String, address: String, zipcode: String) {
     this._id = _id;

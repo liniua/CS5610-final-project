@@ -49,11 +49,6 @@ export class ProfileComponent implements OnInit {
 
 
   updateUser() {
-    // this.activatedRouter.params.subscribe(params => {
-    //   this.userId = params['uid'];
-    // });
-    //
-    // console.log('new info: ' + this.profileForm.value);
     this.username = this.profileForm.value.username;
     this.password = this.profileForm.value.password;
     this.email = this.profileForm.value.email;
