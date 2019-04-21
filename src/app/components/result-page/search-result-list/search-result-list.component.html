@@ -2,19 +2,13 @@
   <div class="container-fluid row">
 
     <div class="navbar-text float-left">
-      <a [routerLink]="['../..']" class="cl-text-black cl-icon-padding">
+      <a [routerLink]="['/userpage']" class="cl-text-black cl-icon-padding">
         <i class="fas fa-chevron-left fontawsome_icon"></i>
       </a>
     </div>
     <div>
       <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
-        Pages
-      </a>
-    </div>
-
-    <div class="navbar-text float-right">
-      <a [routerLink]="['./new']" class="cl-icon-padding cl-text-black">
-        <i class="fas fa-plus fontawsome_icon"></i>
+        Search Result Page
       </a>
     </div>
 
@@ -24,9 +18,9 @@
 
 <div class="container-fluid cl-container-padding">
   <ul class="list-group cl-list-group-borderless">
-    <li *ngFor="let page of pages" class="list-group-item cl-list-item-borderless">
-      <a [routerLink]="['./', page._id]"><i class="fas fa-cog fontawsome_icon float-right"></i></a>
-      <a [routerLink]="['./', page._id, 'widget']">{{page.name}}</a>
+    <li *ngFor="let restaurant of restaurants" class="list-group-item cl-list-item-borderless">
+      <a class="btn btn-primary float-right" (click)="getReview(restaurant)" [routerLink]="['/userpage/reviews']">Reviews</a>
+      <a [routerLink]="['/userpage', restaurant._id, 'show']">{{restaurant.name}}</a>
     </li>
   </ul>
 </div>

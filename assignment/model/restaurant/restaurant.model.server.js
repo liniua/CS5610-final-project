@@ -6,7 +6,9 @@ var UserModel = require("../user/user.model.server");
 
 RestaurantModel.findRestaurantsForUser = findRestaurantsForUser;
 RestaurantModel.createRestaurantForUser = createRestaurantForUser;
+RestaurantModel.findRestaurantsByZipcode = findRestaurantsByZipcode;
 RestaurantModel.findRestaurantById = findRestaurantById;
+RestaurantModel.findRestaurantByName = findRestaurantByName;
 RestaurantModel.updateRestaurant = updateRestaurant;
 RestaurantModel.deleteRestaurant = deleteRestaurant;
 
@@ -31,8 +33,16 @@ function createRestaurantForUser(userId, restaurant){
     });
 }
 
+function findRestaurantsByZipcode(zipcode) {
+    return RestaurantModel.find({zipcode: zipcode});
+}
+
+
 function findRestaurantById(restId) {
   return RestaurantModel.findOne({_id: restId});
+}
+function findRestaurantByName(restName) {
+    return RestaurantModel.findOne({name: restName});
 }
 
 function updateRestaurant(restId, restaurant) {

@@ -33,7 +33,7 @@ export class RestaurantEditComponent implements OnInit {
         this.restaurants = restaurants;
       });
     console.log(this.restaurants);
-    this.restaurantService.findRestaurantById(this.userId, this.rid).subscribe(
+    this.restaurantService.findRestaurantById(this.rid).subscribe(
       (restaurant: Restaurant) => {
         console.log(restaurant);
         this.restaurant = restaurant;

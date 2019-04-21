@@ -9,7 +9,9 @@ module.exports=function(app) {
 
   // GET
   app.get("/api/user/:userId/restaurant", findAllRestaurantsForUser);
-  app.get("/api/user/:userId/restaurant/:restId", findRestaurantById);
+  app.get("/api/restaurant/:restId", findRestaurantById);
+  app.get("/api/restaurants/:zipcode", findRestaurantsByZipcode);
+  app.get("/api/restaurantname/:name", findRestaurantByName);
 
   //DELETE
   app.delete("/api/user/:userId/restaurant/:restId", deleteRestaurant);
@@ -41,11 +43,26 @@ module.exports=function(app) {
       });
 
   }
+  function findRestaurantsByZipcode(req, res) {
+    var zipcode = req.params['zipcode'];
+    RestaurantModel.findRestaurantsByZipcode(zipcode).then(
+        function (restaurants) {
+          console.log(restaurants);
+          res.json(restaurants);
+        },
+        function (err) {
+          res.status(400).send(err);
+        });
+  }
 
   function findRestaurantById(req, res){
-    var userId = req.params['userId'];
     var restId = req.params['restId'];
     RestaurantModel.findRestaurantById(restId).then((restaurant) => res.json(restaurant));
+  }
+
+  function findRestaurantByName(req, res){
+    var restName = req.params['name'];
+    RestaurantModel.findRestaurantByName(restName).then((restaurant) => res.json(restaurant));
   }
 
   function updateRestaurant(req, res){

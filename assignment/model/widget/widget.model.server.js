@@ -33,7 +33,7 @@ function findAllWidgetsForRest(rid) {
     .populate('widgets')
     .then(
       function (rest) {
-        // console.log(restaurant-page.widgets);
+        // console.log(result-page.widgets);
         return rest.widgets;
       }
     )

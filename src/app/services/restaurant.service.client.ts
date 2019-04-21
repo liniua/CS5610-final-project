@@ -21,8 +21,8 @@ export class RestaurantService {
     return this.http.get(this.baseUrl + '/api/user/' + userId + '/restaurant');
   }
 
-  findRestaurantById(userId: String, restId: String) {
-    return this.http.get(this.baseUrl + '/api/user/' + userId + '/restaurant/' + restId);
+  findRestaurantById(restId: String) {
+    return this.http.get(this.baseUrl + '/api/restaurant/' + restId);
   }
 
   updateRestaurant(userId: String, restId: String, restaurant: Restaurant) {
@@ -35,5 +35,13 @@ export class RestaurantService {
   deleteRestaurant(userId: String, restId: String) {
     const url = this.baseUrl + '/api/user/' + userId + '/restaurant/' + restId;
     return this.http.delete(url);
+  }
+
+  findRestaurantsByZipcode(zipcode: String) {
+    return this.http.get(this.baseUrl + '/api/restaurants/' + zipcode);
+  }
+
+  findRestaurantByName(name: String) {
+    return this.http.get(this.baseUrl + '/api/restaurantname/' + name);
   }
 }

@@ -11,9 +11,7 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { RestaurantNewComponent } from './components/restaurant/restaurant-new/restaurant-new.component';
 import { RestaurantEditComponent } from './components/restaurant/restaurant-edit/restaurant-edit.component';
-import { PageNewComponent } from './components/restaurant-page/page-new/page-new.component';
-import { PageEditComponent } from './components/restaurant-page/page-edit/page-edit.component';
-import { PageListComponent } from './components/restaurant-page/page-list/page-list.component';
+import { SearchResultListComponent } from './components/result-page/search-result-list/search-result-list.component';
 import { WidgetChooserComponent } from './components/widget/widget-chooser/widget-chooser.component';
 import { WidgetEditComponent } from './components/widget/widget-edit/widget-edit.component';
 import { WidgetListComponent } from './components/widget/widget-list/widget-list.component';
@@ -37,6 +35,7 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { AdminPageComponent } from './components/user-page/admin-page/admin-page.component';
 import { OwnerPageComponent } from './components/user-page/owner-page/owner-page.component';
 import { CustomerPageComponent } from './components/user-page/customer-page/customer-page.component';
+import { RestaurantShowComponent } from './components/restaurant/restaurant-show/restaurant-show.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +46,7 @@ import { CustomerPageComponent } from './components/user-page/customer-page/cust
     UserPageComponent,
     RestaurantNewComponent,
     RestaurantEditComponent,
-    PageNewComponent,
-    PageEditComponent,
-    PageListComponent,
+    SearchResultListComponent,
     WidgetChooserComponent,
     WidgetEditComponent,
     WidgetListComponent,
@@ -65,7 +62,8 @@ import { CustomerPageComponent } from './components/user-page/customer-page/cust
     UserPageComponent,
     AdminPageComponent,
     OwnerPageComponent,
-    CustomerPageComponent
+    CustomerPageComponent,
+    RestaurantShowComponent
   ],
   imports: [
     BrowserModule,

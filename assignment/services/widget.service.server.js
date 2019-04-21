@@ -139,8 +139,8 @@ module.exports=function(app) {
     console.log('myFile: ' + myFile);
 
     if(myFile == null) {
-      //res.redirect("https://yourheroku.herokuapp.com/user/website/"+rid+"/restaurant-page/"+rid+"/widget/"+widgetId);
-      //res.redirect("http://localhost:8080/user/"+userId+"/restaurant/"+rid+"/restaurant-page/"+rid+"/widget/"+widgetId);
+      //res.redirect("https://yourheroku.herokuapp.com/user/website/"+rid+"/result-page/"+rid+"/widget/"+widgetId);
+      //res.redirect("http://localhost:8080/user/"+userId+"/restaurant/"+rid+"/result-page/"+rid+"/widget/"+widgetId);
       return;
     }
 

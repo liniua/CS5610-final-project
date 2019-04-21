@@ -11,27 +11,27 @@ export class PageService {
 
 
   createPage(websiteId, page) {
-    const url = this.baseUrl + '/api/restaurant/' + websiteId + '/restaurant-page';
+    const url = this.baseUrl + '/api/restaurant/' + websiteId + '/result-page';
     return this._http.post(url, page);
   }
 
   findPageByWebsiteId(websiteId) {
-    const url = this.baseUrl + '/api/restaurant/' + websiteId + '/restaurant-page';
+    const url = this.baseUrl + '/api/restaurant/' + websiteId + '/result-page';
     return this._http.get(url);
   }
 
   findPageById(pageId) {
-    const url = this.baseUrl + '/api/restaurant-page/' + pageId;
+    const url = this.baseUrl + '/api/result-page/' + pageId;
     return this._http.get(url);
   }
 
   updatePage(pageId, page) {
-    const url = this.baseUrl + '/api/restaurant-page/' + pageId;
+    const url = this.baseUrl + '/api/result-page/' + pageId;
     return this._http.put(url, page);
   }
 
   deletePage(pageId) {
-    const url = this.baseUrl + '/api/restaurant-page/' + pageId;
+    const url = this.baseUrl + '/api/result-page/' + pageId;
     return this._http.delete(url);
   }
 }

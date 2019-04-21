@@ -3,14 +3,14 @@ module.exports=function(app) {
   var PageModel = require("../model/page/page.model.server");
 
   //POST calls
-  app.post("/api/restaurant/:rid/restaurant-page", createPage);
+  app.post("/api/restaurant/:rid/result-page", createPage);
   //Get calls
-  app.get("/api/restaurant/:rid/restaurant-page", findAllPagesForWebsite);
-  app.get("/api/restaurant-page/:rid", findPageById);
+  app.get("/api/restaurant/:rid/result-page", findAllPagesForWebsite);
+  app.get("/api/result-page/:rid", findPageById);
   //Put calls
-  app.put("/api/restaurant-page/:rid", updatePage);
+  app.put("/api/result-page/:rid", updatePage);
   //Delete calls
-  app.delete("/api/restaurant-page/:rid", deletePage);
+  app.delete("/api/result-page/:rid", deletePage);
 
   var pages = [
       {_id: '321', name: 'Post 1', websiteId: '333', title: 'Lorem'},
@@ -74,8 +74,8 @@ module.exports=function(app) {
     PageModel.updatePage(pageId, page).then((page) => (res.json(page)));
     // for (var i = 0; i < pages.length; i++) {
     //   if (pages[i]._id === rid) {
-    //     pages[i].name = restaurant-page.name;
-    //     pages[i].title = restaurant-page.title;
+    //     pages[i].name = result-page.name;
+    //     pages[i].title = result-page.title;
     //   }
     // }
     // res.json(pages);
