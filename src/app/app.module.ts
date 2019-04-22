@@ -36,6 +36,8 @@ import { AdminPageComponent } from './components/user-page/admin-page/admin-page
 import { OwnerPageComponent } from './components/user-page/owner-page/owner-page.component';
 import { CustomerPageComponent } from './components/user-page/customer-page/customer-page.component';
 import { RestaurantShowComponent } from './components/restaurant/restaurant-show/restaurant-show.component';
+import { ReviewListComponent } from './components/result-page/review-list/review-list.component';
+import {YelpServiceClient} from './services/yelp.service.client';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,8 @@ import { RestaurantShowComponent } from './components/restaurant/restaurant-show
     AdminPageComponent,
     OwnerPageComponent,
     CustomerPageComponent,
-    RestaurantShowComponent
+    RestaurantShowComponent,
+    ReviewListComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,7 @@ import { RestaurantShowComponent } from './components/restaurant/restaurant-show
     HttpClientModule,
     QuillEditorModule
   ],
-  providers: [UserService, RestaurantService, PageService, WidgetService, FlickrService, SharedService, AuthGuard],
+  providers: [UserService, RestaurantService, PageService, WidgetService, FlickrService, YelpServiceClient, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

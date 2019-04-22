@@ -29,6 +29,8 @@
 </nav>
 
 <div class="container cl-container-padding">
+  <a class="btn btn-primary float-right" [routerLink]="['/userpage/reviews', rid]">
+    <i class="fas fa-link"></i> Reviews</a>
   <div class="widget-list">
     <div *ngFor="let widget of widgets">
 
@@ -73,7 +75,6 @@
                       rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
                       class="form-control">{{widget.text}}</textarea>
           </div>
-
 
         </div>
       </div>

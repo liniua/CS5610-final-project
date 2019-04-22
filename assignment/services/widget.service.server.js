@@ -1,17 +1,8 @@
 module.exports=function(app) {
 
   var multer = require('multer'); // npm install multer --save
-  //var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
   var WidgetModel = require('../model/widget/widget.model.server');
-  // var multerConf = {
-  //   storage: multer.diskStorage({
-  //     destination: __dirname + '/../../dist/my-project/assets/uploads/',
-  //     filename: function (req, file, cb) {
-  //       console.log(file);
-  //       cb(null, file.originalname);
-  //     }
-  //   }),
-  // };
+
   var storage = multer.diskStorage({destination: __dirname+'/../../dist/my-project/assets/uploads/',
       filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -38,8 +29,6 @@ module.exports=function(app) {
 
   //UPLOAD
   app.post ("/api/upload", upload, uploadImage);
-  //app.post ("/api/upload", upload.single('myFile'), uploadImage);
-  //app.post ("/api/upload", multer(multerConf).single('myFile'), uploadImage);
 
   function createWidget(req, res) {
     var rid = req.params['rid'];
@@ -49,11 +38,6 @@ module.exports=function(app) {
     WidgetModel.createWidget(rid,widget).then( function (widget) {
       res.json(widget);
     });
-    // widget._id = (new Date()).getTime() + "";
-    // widget.rid = rid;
-    // widgets.push(widget);
-    // console.log('add new widget' + widget);
-    // res.json(widget);
   }
 
   function findAllWidgetsForRest(req, res) {
@@ -139,9 +123,7 @@ module.exports=function(app) {
     console.log('myFile: ' + myFile);
 
     if(myFile == null) {
-      //res.redirect("https://yourheroku.herokuapp.com/user/website/"+rid+"/result-page/"+rid+"/widget/"+widgetId);
-      //res.redirect("http://localhost:8080/user/"+userId+"/restaurant/"+rid+"/result-page/"+rid+"/widget/"+widgetId);
-      return;
+     return;
     }
 
 

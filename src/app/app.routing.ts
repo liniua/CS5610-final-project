@@ -14,6 +14,7 @@ import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget
 import {AuthGuard} from './services/auth-guard.service';
 import {UserPageComponent} from './components/user-page/user-page.component';
 import {RestaurantShowComponent} from './components/restaurant/restaurant-show/restaurant-show.component';
+import {ReviewListComponent} from './components/result-page/review-list/review-list.component';
 
 
 
@@ -25,7 +26,7 @@ const APP_ROUTES: Routes = [
   { path : 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path : 'userpage', component: UserPageComponent, canActivate: [AuthGuard]},
   { path : 'userpage/:zpc/results', component: SearchResultListComponent, canActivate: [AuthGuard]},
-  { path : 'userpage/:rid/reviews', component: UserPageComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/reviews/:rid', component: ReviewListComponent, canActivate: [AuthGuard]},
 
   { path : 'userpage/new', component: RestaurantNewComponent, canActivate: [AuthGuard]},
   { path : 'userpage/:rid', component: RestaurantEditComponent, canActivate: [AuthGuard]},

@@ -19,7 +19,9 @@
 <div class="container-fluid cl-container-padding">
   <ul class="list-group cl-list-group-borderless">
     <li *ngFor="let restaurant of restaurants" class="list-group-item cl-list-item-borderless">
-      <a class="btn btn-primary float-right" (click)="getReview(restaurant)" [routerLink]="['/userpage/reviews']">Reviews</a>
+      <a class="btn btn-primary float-right" [routerLink]="['/userpage/reviews', restaurant._id]">
+        <i class="fas fa-link"></i> Reviews
+      </a>
       <a [routerLink]="['/userpage', restaurant._id, 'show']">{{restaurant.name}}</a>
     </li>
   </ul>
