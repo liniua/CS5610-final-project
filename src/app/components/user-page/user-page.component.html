@@ -1,0 +1,16 @@
+
+<div [ngSwitch]="user['userType']">
+
+  <div *ngSwitchCase="'admin'">
+    <app-admin-page></app-admin-page>
+  </div>
+
+  <div *ngSwitchCase="'restaurantOwner'">
+    <app-owner-page></app-owner-page>
+  </div>
+
+  <div *ngSwitchCase="'customer'">
+    <app-customer-page></app-customer-page>
+  </div>
+
+</div>

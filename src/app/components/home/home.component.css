@@ -1,0 +1,37 @@
+.cl-text-white{
+    color: #fff;
+}
+.cl-container-padding {
+
+}
+.cl-padding-top{
+    padding-top: 80px;
+}
+.cl-container-padding{
+    padding-top: 50px;
+}
+.beautiful-font {
+
+
+    font-family: 'Tangerine', serif;
+    font-size: 80px;
+}
+
+.font-text{
+    font-family: 'Fira Sans', serif;
+    font-size: 40px;
+    color: blue;
+}
+.font-text-ul{
+    font-family: 'Fira Sans', serif;
+    font-size: 30px;
+    color: blue;
+}
+body{
+    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY780GDe2GO9JkLEh76OtSm_pkxQ1hST0F3ehuEf7BKQnXqgkkww);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+

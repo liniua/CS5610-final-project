@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a routerLink="../" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+      <a class="navbar-brand cl-text-black cl-text-bold" routerLink="./">
+        Widgets Edit
+      </a>
+    </div>
+
+    <div class="navbar-text float-right">
+      <a class="cl-icon-padding cl-text-black">
+        <button class="fas fa-check fontawsome_icon" (click)="f.ngSubmit.emit()" [disabled]="!f.valid">
+        </button>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container cl-container-padding">
+  <form (ngSubmit)="update()" #f="ngForm">
+    <div class="form-group">
+    <label for="image-name">Name</label>
+    <input type="text" class="form-control" id="image-name" placeholder={{widget.name}}
+    ngModel required
+    name="headerName" [(ngModel)]="widget.name"/>
+      <div [hidden]="['widget.name'].valid || ['widget.name'].untouched"
+           class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="youtube-text">Text</label>
+      <input type="text" class="form-control" id="youtube-text" placeholder={{widget.text}}
+             ngModel
+             name="text" [(ngModel)]="widget.text"/>
+    </div>
+    <div class="form-group">
+      <label for="youtube-URL">URL</label>
+      <input type="text" class="form-control" id="youtube-URL" placeholder={{widget.url}}
+             ngModel
+             name="url" [(ngModel)]="widget.url"/>
+    </div>
+    <div class="form-group">
+      <label for="youtube-width">Width</label>
+      <input type="text" class="form-control" id="youtube-width" placeholder={{widget.width}}
+             ngModel
+             name="width" [(ngModel)]="widget.width"/>
+    </div>
+  </form>
+  <a class="btn btn-danger btn-block" routerLink="../" (click) = "delete()">Delete</a>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a routerLink="/profile" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

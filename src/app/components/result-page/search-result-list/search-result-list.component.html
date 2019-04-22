@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['/userpage']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+    </div>
+    <div>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Search Result Page
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<div class="container-fluid cl-container-padding">
+  <ul class="list-group cl-list-group-borderless">
+    <li *ngFor="let restaurant of restaurants" class="list-group-item cl-list-item-borderless">
+      <a class="btn btn-primary float-right" [routerLink]="['/userpage/reviews', restaurant._id]">
+        <i class="fas fa-link"></i> Reviews
+      </a>
+      <a [routerLink]="['/userpage', restaurant._id, 'show']">{{restaurant.name}}</a>
+    </li>
+  </ul>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

@@ -1,0 +1,93 @@
+<nav class="navbar navbar-expand-md cl-blue-navbar navbar-dark fixed-top">
+  <div class="col-1">
+    <a class="navbar-text float-left" [routerLink]="['..']"><i class="fa fa-chevron-left"></i></a >
+  </div>
+
+  <div class="col-3 d-none d-sm-block">
+    <a class="navbar-brand cl-icon-padding" [routerLink]="['..']">Restaurant Owner's Page</a >
+    <a class="navbar-text float-right" [routerLink]="['.']"><i class="fa fa-plus"></i></a >
+  </div>
+
+  <div class="col-8">
+    <a class="navbar-brand cl-icon-padding" [routerLink]="['.']">New Restaurant</a >
+    <a class="navbar-text float-right" [routerLink]="['..']" (click) = "createRestaurant()"><i class="fa fa-check"></i></a >
+  </div>
+</nav>
+
+<div class="contain-fluid">
+  <div class="row">
+    <div class="col-4 d-none d-sm-block">
+      <ul class="list-group cl-list-group-borderless">
+        <li *ngFor="let restaurant of restaurants" class="list-group-item cl-list-item-borderless">
+          <a [routerLink]="['../', restaurant._id]">
+            <i class="fas fa-cog fontawsome_icon float-right" ></i></a>
+          <a [routerLink]="['../', restaurant._id, 'widget']">{{restaurant.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-8">
+      <form (ngSubmit) = "createRestaurant()" #f="ngForm">
+        <div class="form-group">
+          <label for="restaurant-name">Name</label>
+          <input [(ngModel)]="restname" required
+                 name="restname"
+                 type="text"
+                 class="form-control"
+                 id="restaurant-name"
+                 placeholder="Name">
+        </div>
+        <div [hidden]="['restname'].valid || ['restname'].untouched"
+             class="alert alert-danger">
+          Name is required
+        </div>
+
+        <div class="form-group">
+          <label for="restaurant-address">Address</label>
+          <input [(ngModel)]="address" required
+                 name="address"
+                 type="text"
+                 class="form-control"
+                 id="restaurant-address"
+                 placeholder="Address">
+        </div>
+        <div [hidden]="['address'].valid || ['address'].untouched"
+             class="alert alert-danger">
+          Address is required
+        </div>
+
+        <div class="form-group">
+          <label for="zipcode">Zipcode</label>
+          <input [(ngModel)]="zipcode" required
+                 name="zipcode"
+                 type="text"
+                 class="form-control"
+                 id="zipcode"
+                 placeholder="zipcode">
+        </div>
+        <div [hidden]="['zipcode'].valid || ['zipcode'].untouched"
+             class="alert alert-danger">
+          Zipcode is required
+        </div>
+        <div class="form-group">
+          <label for="restaurant-description">Description</label>
+          <textarea [(ngModel)]="description"
+                    name="description"
+                    id="restaurant-description"
+                    class="form-control"
+                    rows="5"
+                    placeholder="Description">
+          </textarea>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-sm cl-blue-navbar navbar-dark fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-white cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

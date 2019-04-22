@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['../']" class="cl-text-black cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+      </a>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Widgets Edit
+      </a>
+    </div>
+
+    <div class="navbar-text float-right">
+      <a class="cl-icon-padding cl-text-black">
+        <button class="fas fa-check fontawsome_icon" (click)="f.ngSubmit.emit()" [disabled]="!f.valid">
+        </button>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container cl-container-padding">
+  <form (ngSubmit) = "update()" #f="ngForm">
+    <div class="form-group">
+      <label for="image-text">Name</label>
+      <input type="text" class="form-control" id="image-text" placeholder={{widget.text}}
+             ngModel required
+             name="text" [(ngModel)]="widget.text"/>
+      <div [hidden]="['widget.text'].valid || ['widget.text'].untouched"
+           class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="size">Size</label>
+      <input type="text" class="form-control" id="size" placeholder="Widget size"
+             name="size" [(ngModel)]="widget.size">
+    </div>
+    <div class="form-group">
+      <label for="image-URL">URL</label>
+      <input type="text" class="form-control" id="image-URL" placeholder={{widget.url}}
+             ngModel required
+             name="url" [(ngModel)]="widget.url"/>
+      <div [hidden]="['widget.url'].valid || ['widget.url'].untouched"
+           class="alert alert-danger">
+        url is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="image-width">Width</label>
+      <input type="text" class="form-control" id="image-width" placeholder={{widget.width}}
+             ngModel
+             name="width" [(ngModel)]="widget.width"/>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputFile">Upload</label>
+      <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
+        <input  name="myFile"   type="file" class="form-control"  id="exampleInputFile"/>
+        <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
+        <input  name="websiteId" value="{{websiteId}}"   style="display: none"/>
+        <input name="pageId" value="{{rid}}" style="display: none"/>
+        <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+      </form>
+    </div>
+    <button class="btn btn-primary btn-block" type="button" (click)="search()">Search</button>
+    <button class="btn btn-danger btn-block" type="button" (click)="delete()" [routerLink]="['../']">Delete</button>
+  </form>
+</div>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>

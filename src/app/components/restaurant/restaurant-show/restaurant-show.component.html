@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-sm bg-light fixed-top">
+  <div class="container-fluid row">
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['/userpage']" class="cl-text-blue cl-icon-padding">
+        <i class="fas fa-chevron-left fontawsome_icon"></i>
+        <a class="cl-text-bold">
+          user page
+        </a>
+      </a>
+    </div>
+
+    <div>
+      <a class="navbar-brand cl-text-black cl-text-bold" [routerLink]="['./']">
+        Restaurant Show Page
+      </a>
+    </div>
+
+    <div class="navbar-text float-left">
+      <a [routerLink]="['/userpage/' + zipcode + '/results']" class="cl-text-blue cl-icon-padding">
+        <i class="fas fa-search fontawsome_icon"></i>
+        <a class="cl-text-bold">
+          restaurants in same zipcode
+        </a>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container cl-container-padding">
+  <a class="btn btn-primary float-right" [routerLink]="['/userpage/reviews', rid]">
+    <i class="fas fa-link"></i> Reviews</a>
+  <div class="widget-list">
+    <div *ngFor="let widget of widgets">
+
+      <div [ngSwitch]="widget.widgetType">
+
+        <div class="jga-widget">
+
+          <div *ngSwitchCase="'HEADING'">
+            <div [ngSwitch]="widget.size">
+              <h1  *ngSwitchCase="1">{{widget.text}}</h1>
+              <h2  *ngSwitchCase="2">{{widget.text}}</h2>
+              <h3  *ngSwitchCase="3">{{widget.text}}</h3>
+              <h4  *ngSwitchCase="4">{{widget.text}}</h4>
+              <h5  *ngSwitchCase="5">{{widget.text}}</h5>
+              <h6  *ngSwitchCase="6">{{widget.text}}</h6>
+            </div>
+          </div>
+
+          <div *ngSwitchCase="'YOUTUBE'" class="youtube-widget">
+
+            <iframe width="560" height="315" [src]="widget.url | safe" frameborder="0" allowfullscreen="" ></iframe>
+          </div>
+
+          <div *ngSwitchCase="'IMAGE'">
+            <img class="img-responsive img-rounded cl-widget-images" [src]=widget.url>
+
+          </div>
+
+          <div *ngSwitchCase="'HTML'">
+            <div [innerHTML]="widget.text"></div>
+          </div>
+
+          <div *ngSwitchCase="'TEXT'">
+            <div *ngIf="widget.formatted">
+              <quill-editor [(ngModel)]="widget.text" name="text"></quill-editor>
+            </div>
+
+            <input *ngIf="!widget.formatted && (!widget.rows || widget.rows===1)"
+                   placeholder="{{widget.placeholder}}" class="form-control"/>
+
+            <textarea *ngIf="!widget.formatted && (widget.rows > 1)"
+                      rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+                      class="form-control">{{widget.text}}</textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar bg-light fixed-bottom">
+  <ul>
+    <a [routerLink]="['/profile']" class="navbar-link pull-right cl-icon-padding">
+      <i class="fa fa-user"></i>
+    </a >
+  </ul>
+</nav>
