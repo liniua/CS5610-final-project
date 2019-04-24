@@ -1,6 +1,4 @@
-
-<body background="http://www.realdetroitweekly.com/wp-content/uploads/2017/06/Restaurants.jpg"
-      style='height: 100%; width: 100%; object-fit: contain'>
+<body>
 <nav class="navbar navbar-expand-sm bg-light fixed-top">
   <div class="container-fluid row">
 
@@ -14,21 +12,20 @@
         Customer's Page
       </a>
     </div>
-    <div class="navbar-text float-right" [routerLink]="['./']">
-      <a>
-        Write a review
-      </a>
-    </div>
+    <!--<div class="navbar-text float-right" [routerLink]="['./']">-->
+      <!--<a>-->
+        <!--Write a review-->
+      <!--</a>-->
+    <!--</div>-->
   </div>
 </nav>
 
 
 
-<div class="container cl-container-padding">
+<div class="contain-fluid cl-container-padding">
 
-  <h1 class="navbar-text cl-text-white">Where to eat?</h1>
+  <h1 class="beautiful-font text-center">Where to eat?</h1>
   <ul>
-    <li>
       <form (ngSubmit) = "searchByZipcode()" #f="ngForm">
         <input type="text"
                name="zipcode"
@@ -45,13 +42,11 @@
                 type="submit"
                 [disabled]="!f.valid">Search by zipCode</button>
       </form>
-    </li>
-    <li>
-      <a>
+  </ul>
+  <ul>
 
-      </a>
-    </li>
-    <li>
+  </ul>
+    <ul>
       <form (ngSubmit) = "searchByRestaurantName()" #g="ngForm">
         <input type="text"
                name="restaurantName"
@@ -60,13 +55,22 @@
                ngModel required #restaurantName="ngModel"/>
         <span class="help-block" *ngIf="!restaurantName.valid && restaurantName.touched">
         Please enter restaurant name!
-    </span>
+        </span>
 
         <button class="btn btn-primary btn-block"
                 type="submit"
                 [disabled]="!g.valid">Search by restaurant name</button>
       </form>
-    </li>
-  </ul>
+    </ul>
 </div>
 </body>
+
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
+  <div class="container-fuild">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
+      <i class="fas fa-user fontawsome_icon"></i>
+    </a>
+  </div>
+</nav>
+
+

@@ -20,7 +20,7 @@ export class WidgetYoutubeComponent implements OnInit {
 
   update () {
     this.widget.name = this.youtubeForm.value.headerName;
-    this.widget.url = this.youtubeForm.value.url;
+    this.widget.url = this.youtubeForm.value.url.replace('watch?v=', 'embed/');
     this.widget.text = this.youtubeForm.value.text;
     this.widget.width = this.youtubeForm.value.width;
 

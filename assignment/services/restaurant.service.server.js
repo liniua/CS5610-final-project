@@ -1,5 +1,3 @@
-
-
 module.exports=function(app) {
 
   var RestaurantModel = require("../model/restaurant/restaurant.model.server");
@@ -24,23 +22,23 @@ module.exports=function(app) {
     var restaurant = req.body;
     restaurant.ownerId = userId;
     RestaurantModel.createRestaurantForUser(userId, restaurant)
-      .then(function(result){
-        console.log("create restaurant:  " + result);
-        res.send(result);
-      });
+        .then(function(result){
+          console.log("create restaurant:  " + result);
+          res.send(result);
+        });
   }
 
 
   function findAllRestaurantsForUser(req, res) {
     var userId = req.params['userId'];
     RestaurantModel.findRestaurantsForUser(userId).then(
-      function (restaurants) {
-        console.log(restaurants);
-        res.json(restaurants);
-      },
-      function (err) {
-        res.status(400).send(err);
-      });
+        function (restaurants) {
+          console.log(restaurants);
+          res.json(restaurants);
+        },
+        function (err) {
+          res.status(400).send(err);
+        });
 
   }
   function findRestaurantsByZipcode(req, res) {
@@ -82,7 +80,7 @@ module.exports=function(app) {
     var userId = req.params['userId'];
     var restId = req.params['restId'];
     RestaurantModel.deleteRestaurant(restId).then(() => (
-      res.status(200)));
+        res.status(200)));
     res.send("success");
   }
 };

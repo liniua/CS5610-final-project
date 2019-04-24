@@ -3,10 +3,15 @@
   {{errorMsg}}
 </div>
 
-<nav class="navbar navbar-expand-sm cl-blue-navbar navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div>
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-home"></i>
+    </a>
+  </div>
 
   <div class="container-fluid">
-    <a class="navbar-brand" href="./">Profile</a>
+    <a class="navbar-brand text-center">Profile</a>
   </div>
 
   <div class="container-fluid w-100 justify-content-end" >
@@ -18,17 +23,17 @@
 
 </nav>
 
-<div class="container cl-container-padding">
+<div class="container-fluid cl-container-padding">
   <h1></h1>
   <ng-form (ngSubmit) = "updateUser()" #f="ngForm">
     <div class="form-group">
       <label for="username">Username</label>
-      <input [(ngModel)]="user.username"
+      <input [(ngModel)]="user['username']"
              name="username"
              type="text"
              class="form-control"
              id="username"
-             placeholder={{user.username}}>
+             placeholder="Alice">
       <!--<span class="help-block" *ngIf="!username.valid && username.touched">-->
         <!--Please enter username!-->
       <!--</span>-->
@@ -36,36 +41,36 @@
 
     <div class="form-group">
       <label for="email">Email address</label>
-      <input [(ngModel)]="user.email"
+      <input [(ngModel)]="user['email']"
              name="email"
              type="email"
              class="form-control"
              id="email"
-             placeholder={{user.email}}>
+             placeholder="alice@gmail.com">
       <!--<span class="help-block" *ngIf="!email.valid && email.touched">-->
         <!--Please enter email!-->
       <!--</span>-->
     </div>
     <div class="form-group">
       <label for="first-name">First Name</label>
-      <input [(ngModel)]="user.firstName"
+      <input [(ngModel)]="user['firstName']"
              name="firstName"
              type="text"
              class="form-control"
              id="first-name"
-             placeholder={{user.firstName}}>
+             placeholder="Alice">
       <!--<span class="help-block" *ngIf="!firstName.valid && firstName.touched">-->
         <!--Please enter first name!-->
       <!--</span>-->
     </div>
     <div class="form-group">
       <label for="last-name">Last Name</label>
-      <input [(ngModel)]="user.lastName"
+      <input [(ngModel)]="user['lastName']"
              name="lastName"
              type="text"
              class="form-control"
              id="last-name"
-             placeholder={{user.lastName}}>
+             placeholder="Wonderland">
       <!--<span class="help-block" *ngIf="!lastName.valid && lastName.touched">-->
         <!--Please enter last name!-->
       <!--</span>-->
@@ -76,9 +81,9 @@
   </ng-form>
 </div>
 
-<nav class="navbar navbar-expand-sm cl-blue-navbar navbar-dark fixed-bottom w-100 justify-content-end">
+<nav class="navbar bg-light fixed-bottom w-100 justify-content-end">
   <div class="container-fuild">
-    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-white cl-icon-padding">
+    <a [routerLink]="['/profile']" class="navbar-link navbar-text cl-text-blue cl-icon-padding">
       <i class="fas fa-user fontawsome_icon"></i>
     </a>
   </div>

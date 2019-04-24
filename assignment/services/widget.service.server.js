@@ -1,13 +1,22 @@
 module.exports=function(app) {
 
   var multer = require('multer'); // npm install multer --save
+  //var upload = multer({ dest: __dirname+'/../../src/assets/uploads' });
   var WidgetModel = require('../model/widget/widget.model.server');
-
+  // var multerConf = {
+  //   storage: multer.diskStorage({
+  //     destination: __dirname + '/../../dist/my-project/assets/uploads/',
+  //     filename: function (req, file, cb) {
+  //       console.log(file);
+  //       cb(null, file.originalname);
+  //     }
+  //   }),
+  // };
   var storage = multer.diskStorage({destination: __dirname+'/../../dist/my-project/assets/uploads/',
-      filename: function (req, file, cb) {
-        cb(null, file.originalname);
+        filename: function (req, file, cb) {
+          cb(null, file.originalname);
+        }
       }
-    }
 
   );
 
@@ -29,6 +38,8 @@ module.exports=function(app) {
 
   //UPLOAD
   app.post ("/api/upload", upload, uploadImage);
+  //app.post ("/api/upload", upload.single('myFile'), uploadImage);
+  //app.post ("/api/upload", multer(multerConf).single('myFile'), uploadImage);
 
   function createWidget(req, res) {
     var rid = req.params['rid'];
@@ -38,6 +49,11 @@ module.exports=function(app) {
     WidgetModel.createWidget(rid,widget).then( function (widget) {
       res.json(widget);
     });
+    // widget._id = (new Date()).getTime() + "";
+    // widget.rid = rid;
+    // widgets.push(widget);
+    // console.log('add new widget' + widget);
+    // res.json(widget);
   }
 
   function findAllWidgetsForRest(req, res) {
@@ -62,18 +78,18 @@ module.exports=function(app) {
     var widgetId = req.params['widgetId'];
     var widget = req.body;
     WidgetModel.updateWidget(widgetId, widget).then(function (widget) {
-        if (widget) {
-          res.status(200).send(widget);
-        } else {
-          res.status(404).send('Update error');
-        }
-      });
+      if (widget) {
+        res.status(200).send(widget);
+      } else {
+        res.status(404).send('Update error');
+      }
+    });
   }
 
   function deleteWidget(req, res) {
     var widgetId = req.params['widgetId'];
     WidgetModel.deleteWidget(widgetId).then(() => (
-      res.sendStatus(200)));
+        res.sendStatus(200)));
   }
 
   function reorderWidgets(req,res) {
@@ -84,13 +100,13 @@ module.exports=function(app) {
     console.log("start" + startIndex);
     console.log("end: " + endIndex);
     WidgetModel.reorderWidget(rid, startIndex, endIndex)
-      .then(
-        function (page) {
-          res.status(200);
-        },
-        function (error) {
-          res.status(400).send(error);
-        })
+        .then(
+            function (page) {
+              res.status(200);
+            },
+            function (error) {
+              res.status(400).send(error);
+            })
   }
 
   function array_swap(arr, old_index, new_index) {
@@ -123,7 +139,9 @@ module.exports=function(app) {
     console.log('myFile: ' + myFile);
 
     if(myFile == null) {
-     return;
+      //res.redirect("https://yourheroku.herokuapp.com/user/website/"+rid+"/result-page/"+rid+"/widget/"+widgetId);
+      //res.redirect("http://localhost:8080/user/"+userId+"/restaurant/"+rid+"/result-page/"+rid+"/widget/"+widgetId);
+      return;
     }
 
 
@@ -143,13 +161,13 @@ module.exports=function(app) {
     } else {
       var widget = { url: '/assets/uploads/'+filename };
       WidgetModel
-        .updateWidget(widgetId, widget)
-        .then(function (status) {
-            res.sendStatus(200);
-          },
-          function (err) {
-            res.sendStatus(404).send(err);
-          })
+          .updateWidget(widgetId, widget)
+          .then(function (status) {
+                res.sendStatus(200);
+              },
+              function (err) {
+                res.sendStatus(404).send(err);
+              })
       ;
     }
 

@@ -24,7 +24,13 @@ export class AdminPageComponent implements OnInit {
 
   deleteUser(delete_user) {
     return this.userService.deleteUser(delete_user._id).subscribe(
-        () => this.route.navigate(['/userpage'])
+        (data: any) => {
+          this.userService.findAllUsers().subscribe(
+              (users: User[]) => {
+                this.users = users;
+              }
+          );
+        }
     );
   }
 

@@ -20,7 +20,6 @@ import { WidgetImageComponent } from './components/widget/widget-edit/widget-ima
 import { WidgetYoutubeComponent } from './components/widget/widget-edit/widget-youtube/widget-youtube.component';
 import {UserService} from './services/user.service.client';
 import {RestaurantService} from './services/restaurant.service.client';
-import {PageService} from './services/page.service.client';
 import {WidgetService} from './services/widget.service.client';
 import {FlickrService} from './services/flickr.service.client';
 import {SortableDirective} from './components/widget/widget-list/sortable.directive';
@@ -36,8 +35,9 @@ import { AdminPageComponent } from './components/user-page/admin-page/admin-page
 import { OwnerPageComponent } from './components/user-page/owner-page/owner-page.component';
 import { CustomerPageComponent } from './components/user-page/customer-page/customer-page.component';
 import { RestaurantShowComponent } from './components/restaurant/restaurant-show/restaurant-show.component';
-import { ReviewListComponent } from './components/result-page/review-list/review-list.component';
+import { HomeComponent } from './components/home/home.component';
 import {YelpServiceClient} from './services/yelp.service.client';
+import {ReviewListComponent} from './components/result-page/review-list/review-list.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +66,7 @@ import {YelpServiceClient} from './services/yelp.service.client';
     OwnerPageComponent,
     CustomerPageComponent,
     RestaurantShowComponent,
+    HomeComponent,
     ReviewListComponent
   ],
   imports: [
@@ -75,7 +76,7 @@ import {YelpServiceClient} from './services/yelp.service.client';
     HttpClientModule,
     QuillEditorModule
   ],
-  providers: [UserService, RestaurantService, PageService, WidgetService, FlickrService, YelpServiceClient, SharedService, AuthGuard],
+  providers: [UserService, RestaurantService, WidgetService, FlickrService, YelpServiceClient, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

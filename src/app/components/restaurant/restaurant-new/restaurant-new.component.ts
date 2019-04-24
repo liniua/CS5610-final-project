@@ -26,9 +26,9 @@ export class RestaurantNewComponent implements OnInit {
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
     this.restaurantService.findRestaurantsByUser(this.userId).subscribe(
-      (restaurants: Restaurant[]) => {
-        this.restaurants = restaurants;
-      });
+        (restaurants: Restaurant[]) => {
+          this.restaurants = restaurants;
+        });
   }
 
   createRestaurant() {
@@ -42,9 +42,9 @@ export class RestaurantNewComponent implements OnInit {
     console.log(new_restaurant.name);
     console.log(new_restaurant.ownerId);
     this.restaurantService.createRestaurant(this.userId, new_restaurant).subscribe(
-      (restaurant: Restaurant) => {
-        this.router.navigate(['../'], {relativeTo: this.activatedRoute});
-      }
+        (restaurant: Restaurant) => {
+          this.router.navigate(['../'], {relativeTo: this.activatedRoute});
+        }
     );
   }
 }

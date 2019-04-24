@@ -13,10 +13,11 @@ input.form-control {
 a:hover{
   text-decoration: none;
 }
-
 .cl-container-padding {
-  padding-top: 5%;
+  padding-top: 10%;
   padding-bottom: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .cl-blue-navbar{

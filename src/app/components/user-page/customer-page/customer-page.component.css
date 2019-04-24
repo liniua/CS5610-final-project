@@ -1,3 +1,26 @@
 .cl-text-white{
     color: #fff;
 }
+.cl-container-padding {
+    padding: 20% 10% 10%;
+}
+.beautiful-font {
+
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: #206090;
+    text-shadow:
+            -3px -3px 0 #ffffff,
+            3px -3px 0 #ffffff,
+            -3px 3px 0 #ffffff,
+            3px 3px 0 #ffffff;
+}
+
+
+body{
+    background: url(http://www.realdetroitweekly.com/wp-content/uploads/2017/06/Restaurants.jpg) no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    overflow-y: scroll;
+}

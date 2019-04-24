@@ -9,24 +9,24 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./search-result-list.component.css']
 })
 export class SearchResultListComponent implements OnInit {
-    zipcode: String;
-    restaurants: Restaurant[];
+  zipcode: String;
+  restaurants: Restaurant[];
 
-    constructor(private activatedRoute: ActivatedRoute,
-                private restaurantService: RestaurantService) { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private restaurantService: RestaurantService) { }
 
-    ngOnInit() {
-        this.activatedRoute.params.subscribe(
-            (params: any) => {
-                this.zipcode = params['zpc'];
-                console.log(this.zipcode);
-            });
-        this.restaurantService.findRestaurantsByZipcode(this.zipcode).subscribe(
-            (restaurants: Restaurant[]) => {
-                this.restaurants = restaurants;
-            }
-        );
-    }
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(
+        (params: any) => {
+          this.zipcode = params['zpc'];
+          console.log(this.zipcode);
+        });
+    this.restaurantService.findRestaurantsByZipcode(this.zipcode).subscribe(
+        (restaurants: Restaurant[]) => {
+          this.restaurants = restaurants;
+        }
+    );
+  }
 
 
 }

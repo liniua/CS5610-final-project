@@ -14,6 +14,7 @@ import {FlickrImageSearchComponent} from './components/widget/widget-edit/widget
 import {AuthGuard} from './services/auth-guard.service';
 import {UserPageComponent} from './components/user-page/user-page.component';
 import {RestaurantShowComponent} from './components/restaurant/restaurant-show/restaurant-show.component';
+import {HomeComponent} from './components/home/home.component';
 import {ReviewListComponent} from './components/result-page/review-list/review-list.component';
 
 
@@ -21,6 +22,7 @@ import {ReviewListComponent} from './components/result-page/review-list/review-l
 // Import all other components here
 
 const APP_ROUTES: Routes = [
+  { path : '', component: HomeComponent},
   { path : 'login' , component: LoginComponent},
   { path : 'register' , component: RegisterComponent},
   { path : 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
@@ -28,12 +30,12 @@ const APP_ROUTES: Routes = [
   { path : 'userpage/:zpc/results', component: SearchResultListComponent, canActivate: [AuthGuard]},
   { path : 'userpage/reviews/:rid', component: ReviewListComponent, canActivate: [AuthGuard]},
 
-  { path : 'userpage/new', component: RestaurantNewComponent, canActivate: [AuthGuard]},
-  { path : 'userpage/:rid', component: RestaurantEditComponent, canActivate: [AuthGuard]},
-  { path : 'userpage/:rid/show', component: RestaurantShowComponent, canActivate: [AuthGuard]},
-  { path : 'userpage/:rid/widget', component: WidgetListComponent, canActivate: [AuthGuard]},
-  { path : 'userpage/:rid/widget/new', component: WidgetChooserComponent, canActivate: [AuthGuard]},
-  { path : 'userpage/:rid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/new', component: RestaurantNewComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/:rid', component: RestaurantEditComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/:rid/show', component: RestaurantShowComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/:rid/widget', component: WidgetListComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/:rid/widget/new', component: WidgetChooserComponent, canActivate: [AuthGuard]},
+  { path : 'userpage/:rid/widget/:wgid', component: WidgetEditComponent, canActivate: [AuthGuard]},
   { path : 'userpage/:rid/widget/:wgid/flickr', component: FlickrImageSearchComponent, canActivate: [AuthGuard]},
   // so on
 ];

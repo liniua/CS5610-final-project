@@ -70,9 +70,6 @@ export class UserService {
 
   findUserById(userId: String) {
     return this.http.get(this.baseUrl + '/api/user/' + userId);
-      // .pipe(map((response: Response) => {
-      //   return response.json();
-      // }));
   }
 
   findUserByUsername(username: String) {
@@ -84,8 +81,8 @@ export class UserService {
   }
 
 
-  updateUser(user: User) {
-    return this.http.put(this.baseUrl + '/api/user/' + user._id, user);
+  updateUser(user: any) {
+    return this.http.put(this.baseUrl + '/api/user/' + user['_id'], user);
 
   }
 

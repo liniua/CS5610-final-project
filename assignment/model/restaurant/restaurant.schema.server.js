@@ -7,7 +7,6 @@ var RestaurantSchema = mongoose.Schema({
   description: String,
   address: String,
   zipcode: String,
-  //ads: Number,
   widgets: [
     {type: mongoose.Schema.Types.ObjectId, ref: 'WidgetModel'}
   ],

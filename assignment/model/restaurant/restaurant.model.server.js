@@ -6,11 +6,12 @@ var UserModel = require("../user/user.model.server");
 
 RestaurantModel.findRestaurantsForUser = findRestaurantsForUser;
 RestaurantModel.createRestaurantForUser = createRestaurantForUser;
-RestaurantModel.findRestaurantsByZipcode = findRestaurantsByZipcode;
 RestaurantModel.findRestaurantById = findRestaurantById;
-RestaurantModel.findRestaurantByName = findRestaurantByName;
 RestaurantModel.updateRestaurant = updateRestaurant;
 RestaurantModel.deleteRestaurant = deleteRestaurant;
+RestaurantModel.findRestaurantByName = findRestaurantByName;
+RestaurantModel.findRestaurantsByZipcode = findRestaurantsByZipcode;
+
 
 module.exports = RestaurantModel;
 
@@ -18,6 +19,14 @@ function findRestaurantsForUser(userId){
   return RestaurantModel.find({"ownerId": userId})
     .populate('ownerId', 'username')
     .exec();
+}
+
+function findRestaurantsByZipcode(zipcode) {
+    return RestaurantModel.find({zipcode: zipcode});
+}
+
+function findRestaurantByName(restName) {
+    return RestaurantModel.findOne({name: restName});
 }
 
 function createRestaurantForUser(userId, restaurant){
@@ -33,16 +42,8 @@ function createRestaurantForUser(userId, restaurant){
     });
 }
 
-function findRestaurantsByZipcode(zipcode) {
-    return RestaurantModel.find({zipcode: zipcode});
-}
-
-
 function findRestaurantById(restId) {
   return RestaurantModel.findOne({_id: restId});
-}
-function findRestaurantByName(restName) {
-    return RestaurantModel.findOne({name: restName});
 }
 
 function updateRestaurant(restId, restaurant) {

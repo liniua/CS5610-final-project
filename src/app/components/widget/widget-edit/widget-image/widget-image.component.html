@@ -20,7 +20,7 @@
   </div>
 </nav>
 
-<div class="container cl-container-padding">
+<div class="contain-fluid cl-container-padding">
   <form (ngSubmit) = "update()" #f="ngForm">
     <div class="form-group">
       <label for="image-text">Name</label>
@@ -59,8 +59,7 @@
       <form ngNoForm action="{{baseUrl}}/api/upload" method="post" enctype="multipart/form-data">
         <input  name="myFile"   type="file" class="form-control"  id="exampleInputFile"/>
         <input  name="widgetId" value="{{wgid}}"   style="display: none"/>
-        <input  name="websiteId" value="{{websiteId}}"   style="display: none"/>
-        <input name="pageId" value="{{rid}}" style="display: none"/>
+        <input name="rid" value="{{rid}}" style="display: none"/>
         <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
       </form>
     </div>

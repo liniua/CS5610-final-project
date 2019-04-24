@@ -23,6 +23,7 @@ export class CustomerPageComponent implements OnInit {
 
   searchByZipcode() {
     this.zipcode = this.searchForm.value.zipcode;
+    console.log('the zipcode you are searching is');
     this.route.navigate(['userpage/' + this.zipcode + '/results']);
   }
 
@@ -31,7 +32,7 @@ export class CustomerPageComponent implements OnInit {
     this.restaurantName = this.reviewForm.value.restaurantName;
     this.restaurantService.findRestaurantByName(this.restaurantName).subscribe(
         (restaurant: Restaurant) => {
-          this.route.navigate(['/userpage/' + restaurant._id + '/show']);
+          this.route.navigate(['/userpage/' + restaurant['_id'] + '/show']);
         }
     );
   }

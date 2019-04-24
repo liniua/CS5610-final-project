@@ -14,13 +14,13 @@ export class ProfileComponent implements OnInit {
 
   @ViewChild('f') profileForm: NgForm;
 
-  userId: String;
-  user: User;
   username: String;
-  password: String;
-  email: String;
   firstName: String;
   lastName: String;
+  email: String;
+  user = {};
+  userId: String;
+
   errorFlag: boolean;
   errorMsg = 'Invalid username or password !';
 
@@ -31,52 +31,32 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
-    return this.userService.findUserById(this.userId).subscribe(
-      (user: User) => {
-        console.log('This is: ' + user.username);
-        console.log('This is: ' + user._id);
-        this.user = user;
-      }
-    );
+    this.user = this.sharedService.user;
   }
 
   logout() {
     this.userService.logout()
       .subscribe(
-        (data: any) => this.route.navigate(['/login'])
+        (data: any) => this.route.navigate([''])
       );
+    this.sharedService.user = {};
   }
 
 
   updateUser() {
-    this.username = this.profileForm.value.username;
-    this.password = this.profileForm.value.password;
-    this.email = this.profileForm.value.email;
-    this.firstName = this.profileForm.value.firstName;
-    this.lastName = this.profileForm.value.lastName;
-
-    const user = {_id: this.userId,
-      username: this.username,
-      userType: this.user.userType,
-      password: this.password,
-      firstName: this.firstName,
-      lastName: this.lastName,
-      email: this.email};
-
-    console.log('new user: ' + user._id);
-    console.log(user.username);
-    console.log(user.email);
-    console.log(user.firstName);
-    console.log(user.lastName);
-    this.userService.updateUser(user).subscribe(
+    this.errorFlag = false;
+    if (this.user['username'] === undefined) {
+      this.errorFlag = true;
+    }
+    return this.userService.updateUser(this.user).subscribe(
         (new_user: any) => {
-          this.user = new_user;
-          this.route.navigate(['/profile']);
+          console.log(new_user);
+          alert('update succeed!');
         }
       );
   }
   deleteUser(delete_user) {
-    return this.userService.deleteUser(delete_user._id).subscribe(
+    return this.userService.deleteUser(delete_user['_id']).subscribe(
       () => this.route.navigate(['/login'])
     );
   }

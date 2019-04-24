@@ -24,20 +24,20 @@ export class RestaurantEditComponent implements OnInit {
     this.userId = this.sharedService.user['_id'];
     console.log(this.userId);
     this.activatedRoute.params.subscribe(
-      (params: any) => {
-        this.rid = params['rid'];
-        console.log(this.rid);
-      });
+        (params: any) => {
+          this.rid = params['rid'];
+          console.log(this.rid);
+        });
     this.restaurantService.findRestaurantsByUser(this.userId).subscribe(
-      (restaurants: Restaurant[]) => {
-        this.restaurants = restaurants;
-      });
+        (restaurants: Restaurant[]) => {
+          this.restaurants = restaurants;
+        });
     console.log(this.restaurants);
     this.restaurantService.findRestaurantById(this.rid).subscribe(
-      (restaurant: Restaurant) => {
-        console.log(restaurant);
-        this.restaurant = restaurant;
-      }
+        (restaurant: Restaurant) => {
+          console.log(restaurant);
+          this.restaurant = restaurant;
+        }
     );
     console.log(this.restaurant);
   }
@@ -52,15 +52,15 @@ export class RestaurantEditComponent implements OnInit {
     this.restaurant.address = this.restForm.value.address;
     this.restaurant.zipcode = this.restForm.value.zipcode;
     this.restaurantService.updateRestaurant(this.userId, this.rid, this.restaurant).subscribe(
-      (restaurant: Restaurant) => {
-        this.restaurant = restaurant;
-      }
+        (restaurant: Restaurant) => {
+          this.restaurant = restaurant;
+        }
     );
   }
   deleteRestaurant() {
     console.log(this.rid);
     this.restaurantService.deleteRestaurant(this.userId, this.rid).subscribe(
-      () => this.router.navigate(['../'], {relativeTo: this.activatedRoute}));
+        () => this.router.navigate(['../'], {relativeTo: this.activatedRoute}));
   }
 
 }

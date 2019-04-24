@@ -1,4 +1,9 @@
-<div class="container cl-container-padding">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <i class="fas fa-home"></i>
+  </a>
+</nav>
+<div class="contain-fluid cl-container-padding">
 
   <div *ngIf="error"
        class="alert alert-danger">
@@ -13,8 +18,8 @@
          placeholder="username"
          ngModel
          required
-         #name="ngModel"/>
-    <span class="help-block" *ngIf="!name.valid && name.touched">*Please enter username!</span>
+         #username="ngModel"/>
+    <span class="help-block" *ngIf="!username.valid && username.touched">*Please enter username!</span>
 
   <input name="password"
          type="password"
@@ -22,8 +27,8 @@
          placeholder="password"
          ngModel
          required
-         #pass="ngModel"/>
-    <span class="help-block" *ngIf="!pass.valid && pass.touched">*Please enter password!</span>
+         #password="ngModel"/>
+    <span class="help-block" *ngIf="!password.valid && password.touched">*Please enter password!</span>
 
   <input name="vpassword"
          type="password"
@@ -31,8 +36,8 @@
          placeholder="verify password"
          ngModel
          required
-         #vpass="ngModel"/>
-    <span class="help-block" *ngIf="!vpass.valid && vpass.touched">*Please enter password again!</span>
+         #vpassword="ngModel"/>
+    <span class="help-block" *ngIf="!vpassword.valid && vpassword.touched">*Please enter password again!</span>
     <label>
       <a>User Type </a>
       <select type="text"

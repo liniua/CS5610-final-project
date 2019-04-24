@@ -8,7 +8,7 @@ module.exports=function(app) {
   const facebookConfig = {
     clientID     : '357107555011771',
     clientSecret : '80430dc4f5bffabbef90854542b6f421',
-    callbackURL  : 'http://localhost:8080/auth/facebook/callback'
+    callbackURL  : 'http://localhost:3200/auth/facebook/callback'
   };
   // var facebookConfig = {
   //   clientID     : process.env.FACEBOOK_CLIENT_ID,
@@ -212,7 +212,7 @@ module.exports=function(app) {
 
   function findUserById(req, res) {
 
-    var userId = req.params["userId"];
+    var userId = req.params['userId'];
     UserModel.findUserById(userId).then((user) => res.json(user));
   }
 
@@ -226,7 +226,7 @@ module.exports=function(app) {
 
     UserModel.updateUser(userId, user).then(function(user) {
       if (user) {
-        res.status(200).send(user);
+        res.send(user);
       } else {
         res.status(404).send("not found!");
       }
@@ -236,9 +236,14 @@ module.exports=function(app) {
   function deleteUser(req, res) {
 
     var userId = req.params['userId'];
-    UserModel.deleteUser(userId).then(() => (
-      res.sendStatus(200)
-    ));
+    console.log("The userID to be deleted :" + userId);
+    UserModel.deleteUser(userId).then(function(user) {
+          res.send(user);
+        }, function (error) {
+          console.log("delete user error:" + error);
+          res.status(400).send("use not found");
+        }
+    );
   }
 
 };

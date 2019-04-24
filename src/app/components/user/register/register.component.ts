@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           (data: any) => {
             this.user = data;
-            console.log(this.user);
+            //console.log(this.user);
             this.router.navigate(['/profile']);
           },
           (error: any) => {
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
           }
         );
 
-      console.log('Add new user: ' + this.user.username);
+      //console.log('Add new user: ' + this.user['username']);
     } else {
 
         this.error = 'Passwords do not match!';

@@ -12,7 +12,7 @@ import {SharedService} from '../../services/shared.service';
 export class UserPageComponent implements OnInit {
 
   userId: String;
-  user: User;
+  user = {};
 
   constructor(private userService: UserService,
               private activatedRouter: ActivatedRoute,
@@ -21,12 +21,15 @@ export class UserPageComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.sharedService.user['_id'];
-    return this.userService.findUserById(this.userId).subscribe(
-        (user: User) => {
-          console.log('This is: ' + user.username);
-          console.log('This is: ' + user._id);
+    this.userService.findUserById(this.userId).subscribe(
+        (user: any) => {
+          console.log('This is: ' + user['username']);
+          console.log('This is: ' + user['_id']);
           this.user = user;
-        }
+        },
+        (error: any) => {
+          console.log(error);
+      }
     );
   }
 }

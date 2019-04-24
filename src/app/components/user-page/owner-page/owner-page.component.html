@@ -27,22 +27,22 @@
     <li *ngFor="let restaurant of restaurants" class="list-group-item cl-list-item-borderless">
       <a [routerLink]="['./', restaurant._id]"><i class="fas fa-edit fontawsome_icon float-right"></i></a>
       <!--<a class="container cl-container-padding">-->
-        <!--<form (ngSubmit) = "payForAds(restaurant)" #f="ngForm">-->
-          <!--<input type="text"-->
-                 <!--name="ads"-->
-                 <!--class="form-control float-left"-->
-                 <!--placeholder={{restaurant.ads}}-->
-                 <!--ngModel-->
-                 <!--required-->
-                 <!--#ads="ngModel"/>-->
-          <!--<span class="help-block" *ngIf="!ads.valid && ads.touched">-->
-          <!--Please enter the amount of ads fee!-->
-          <!--</span>-->
+      <!--<form (ngSubmit) = "payForAds(restaurant)" #f="ngForm">-->
+      <!--<input type="text"-->
+      <!--name="ads"-->
+      <!--class="form-control float-left"-->
+      <!--placeholder={{restaurant.ads}}-->
+      <!--ngModel-->
+      <!--required-->
+      <!--#ads="ngModel"/>-->
+      <!--<span class="help-block" *ngIf="!ads.valid && ads.touched">-->
+      <!--Please enter the amount of ads fee!-->
+      <!--</span>-->
 
-          <!--<button class="btn btn-primary float-right"-->
-                  <!--type="submit"-->
-                  <!--[disabled]="!f.valid">Pay for Ads</button>-->
-        <!--</form>-->
+      <!--<button class="btn btn-primary float-right"-->
+      <!--type="submit"-->
+      <!--[disabled]="!f.valid">Pay for Ads</button>-->
+      <!--</form>-->
       <!--</a>-->
       <a [routerLink]="['./', restaurant._id, 'widget']">{{restaurant.name}}</a>
     </li>

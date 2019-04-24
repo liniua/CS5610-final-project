@@ -3,7 +3,9 @@
 
     <div class="navbar-text float-left">
       <a [routerLink]="['/profile']" class="cl-text-black cl-icon-padding">
-        <i class="fas fa-chevron-left fontawsome_icon">Profile</i>
+        <i class="fas fa-chevron-left fontawsome_icon">
+          <a class="cl-text-bold">Profile</a>
+        </i>
       </a>
     </div>
     <div>
@@ -31,7 +33,7 @@
         <div class="column">{{user.username}}</div>
         <div class="column">{{user.userType}}</div>
         <div class="column">
-          <a class="btn btn-danger" (click)="deleteUser(user)" [routerLink]="['/userpage']">Delete</a>
+          <a class="btn btn-danger" [routerLink]="['/userpage']" (click)="deleteUser(user)">Delete</a>
         </div>
       </div>
     </li>

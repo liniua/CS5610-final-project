@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var RestaurantModel = require('../restaurant/restaurant.schema.server')
+var restaurantSchema = require('../restaurant/restaurant.schema.server');
 
 var UserSchema = mongoose.Schema({
   username: String,
@@ -10,7 +10,7 @@ var UserSchema = mongoose.Schema({
   email: String,
   phone: String,
   restaurants:[
-    {type: mongoose.Schema.Types.ObjectId, ref: 'RestaurantModel'}
+    restaurantSchema
   ],
   facebook : {
     token: String,

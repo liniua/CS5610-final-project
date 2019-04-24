@@ -1,20 +1,24 @@
 <nav class="navbar navbar-expand-md cl-blue-navbar navbar-dark fixed-top">
-  <div class="col-1">
-    <a class="navbar-text float-left" [routerLink]="['..']"><i class="fa fa-chevron-left"></i></a >
+  <div class="col-3">
+    <a class="navbar-text float-left" [routerLink]="['..']">
+      <i class="fa fa-chevron-left"></i>
+      <a class="cl-text-bold">Owner's Page</a >
+    </a >
   </div>
 
   <div class="col-3 d-none d-sm-block">
-    <a class="navbar-brand cl-icon-padding" [routerLink]="['..']">Restaurant Owner's Page</a >
-    <a class="navbar-text float-right" [routerLink]="['.']"><i class="fa fa-plus"></i></a >
+    <a class="navbar-text float-right" [routerLink]="['.']">
+      <i class="fa fa-plus"></i>
+      <a class="cl-text-bold">New Restaurant</a >
+    </a >
   </div>
 
-  <div class="col-8">
-    <a class="navbar-brand cl-icon-padding" [routerLink]="['.']">New Restaurant</a >
+  <div class="col-6">
     <a class="navbar-text float-right" [routerLink]="['..']" (click) = "createRestaurant()"><i class="fa fa-check"></i></a >
   </div>
 </nav>
 
-<div class="contain-fluid">
+<div class="contain-fluid cl-container-padding">
   <div class="row">
     <div class="col-4 d-none d-sm-block">
       <ul class="list-group cl-list-group-borderless">
