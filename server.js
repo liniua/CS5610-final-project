@@ -42,10 +42,7 @@ const port = process.env.PORT || '3200';
 app.set('port', port);
 
 
-
-// mongodb://<dbuser>:<dbpassword>@ds113505.mlab.com:13505/webdev
 //var connectionString = 'mongodb://127.0.0.1:27017/webdev';
-//var connectionString = 'mongodb://webdev-nanliu-cs5610:webdev-nanliu-cs5610@ds051615.mlab.com:51615/heroku_2hdv4wjv';
 var connectionString = 'mongodb://5610-final-project:5610-final-project@ds145916.mlab.com:45916/heroku_6v78qj90';
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
@@ -59,28 +56,5 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // Create HTTP services
 const server = http.createServer(app);
-require('./assignment/app')(app);
+require('./backend/app')(app);
 server.listen( port , () => console.log('Running on port 3200'));
-
-/*var dbServer = require('./test-mongodb/app');
-dbServer(app);*/
-
-//require('./test-mongodb/app')(app);
-
-// app.get('/api/hello', function (req, res) {
-//   console.log("Get hello api call!");
-//   res.send("Hello world!");})
-
-// whenever add a new api request, restart the services.
-
-// For Build: Catch all other routes and return the index file -- BUILDING
-
-// app.get('/api/hello', function (req, res) {
-//  res.sendFile(path.join(__dirname, 'dist/index.html'));
-// });
-
-
-// include a file ./assignment/app
-
-
-//app.listen(port, () => console.log('Running on port 8080'));

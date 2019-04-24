@@ -14,32 +14,13 @@ export class HomeComponent implements OnInit {
 
   zipcode: String;
   loggedin: boolean;
+  loggedout = true;
 
   constructor(private sharedService: SharedService, private userService: UserService, private route: Router) { }
 
   ngOnInit() {
     this.loggedin = Object.keys(this.sharedService.user).length !== 0;
-    console.log('loggedin: ' + this.loggedin);
-    if (this.loggedin) {
-      document.getElementById('loginbtn').style.display = 'none';
-      document.getElementById('logoutbtn').style.display = 'block';
-    } else {
-      document.getElementById('loginbtn').style.display = 'block';
-    }
-  }
-
-  logout() {
-    this.userService.logout()
-        .subscribe(
-            (data: any) => this.route.navigate([''])
-        );
-    this.sharedService.user = {};
-  }
-
-  searchByZipcode() {
-    this.zipcode = this.searchForm.value.zipcode;
-    console.log('the zipcode you are searching is');
-    this.route.navigate(['userpage/' + this.zipcode + '/results']);
+    this.loggedout = !this.loggedin;
   }
 
 }
