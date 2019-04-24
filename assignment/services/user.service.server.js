@@ -5,16 +5,16 @@ module.exports=function(app) {
   const FacebookStrategy = require('passport-facebook').Strategy;
   const bcrypt = require("bcrypt-nodejs");
   const UserModel = require("../model/user/user.model.server");
-  // const facebookConfig = {
-  //   clientID     : '357107555011771',
-  //   clientSecret : '80430dc4f5bffabbef90854542b6f421',
-  //   callbackURL  : 'http://localhost:3200/auth/facebook/callback'
-  // };
-  var facebookConfig = {
-    clientID     : process.env.FACEBOOK_CLIENT_ID,
-    clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+  const facebookConfig = {
+    clientID     : '357107555011771',
+    clientSecret : '80430dc4f5bffabbef90854542b6f421',
+    callbackURL  : 'http://localhost:3200/auth/facebook/callback'
   };
+  // var facebookConfig = {
+  //   clientID     : process.env.FACEBOOK_CLIENT_ID,
+  //   clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+  //   callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+  // };
 
   //Post calls
   app.post("/api/user", createUsers);
